@@ -1,0 +1,665 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C55B65E41A456FDC00585865 /* AutoMosaicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65E31A456FDC00585865 /* AutoMosaicTests.m */; };
+		C55B66061A4570BD00585865 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65F01A4570BD00585865 /* AppDelegate.m */; };
+		C55B66071A4570BD00585865 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65F41A4570BD00585865 /* main.m */; };
+		C55B66081A4570BD00585865 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65F71A4570BD00585865 /* ViewController.m */; };
+		C55B66091A4570BD00585865 /* AutoMosaic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C55B65FB1A4570BD00585865 /* AutoMosaic.xcdatamodeld */; };
+		C55B660D1A4570BD00585865 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C55B66041A4570BD00585865 /* Images.xcassets */; };
+		C55B66121A45C42400585865 /* HwPhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66111A45C42400585865 /* HwPhotoHelper.m */; };
+		C55B66141A45C4E000585865 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55B66131A45C4DF00585865 /* AssetsLibrary.framework */; };
+		C55B66191A45CFF700585865 /* HWProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66181A45CFF700585865 /* HWProgressHUD.m */; };
+		C55B661A1A45D38C00585865 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C55B65FD1A4570BD00585865 /* LaunchScreen.xib */; };
+		C55B661B1A45D38C00585865 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55B65FF1A4570BD00585865 /* Main.storyboard */; };
+		C55B66211A45E69F00585865 /* HWPhotoMosaicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66201A45E69F00585865 /* HWPhotoMosaicViewController.m */; };
+		C55B66291A45F7CC00585865 /* MetaPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66281A45F7CC00585865 /* MetaPhoto.m */; };
+		C55B662C1A45F87A00585865 /* UIColor+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662B1A45F87A00585865 /* UIColor+Metrics.m */; };
+		C55B662F1A46020600585865 /* UIImage+HWMosaic.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662E1A46020600585865 /* UIImage+HWMosaic.m */; };
+		C55B66321A46B9DB00585865 /* HWSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66311A46B9DB00585865 /* HWSettingViewController.m */; };
+		DC33F60FCF2B7E9ED8B974A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F961299844C7B109C308CEE7 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C55B65DE1A456FDC00585865 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C55B65B91A456FDC00585865 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C55B65C01A456FDC00585865;
+			remoteInfo = AutoMosaic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8B81C6540DA5F6D494A35428 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C55B65C11A456FDC00585865 /* AutoMosaic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoMosaic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C55B65DD1A456FDC00585865 /* AutoMosaicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoMosaicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C55B65E21A456FDC00585865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C55B65E31A456FDC00585865 /* AutoMosaicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoMosaicTests.m; sourceTree = "<group>"; };
+		C55B65EF1A4570BD00585865 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C55B65F01A4570BD00585865 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C55B65F41A4570BD00585865 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C55B65F61A4570BD00585865 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C55B65F71A4570BD00585865 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C55B65FC1A4570BD00585865 /* AutoMosaic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AutoMosaic.xcdatamodel; sourceTree = "<group>"; };
+		C55B65FE1A4570BD00585865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C55B66001A4570BD00585865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C55B66011A4570BD00585865 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C55B66041A4570BD00585865 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C55B66101A45C42400585865 /* HwPhotoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HwPhotoHelper.h; sourceTree = "<group>"; };
+		C55B66111A45C42400585865 /* HwPhotoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HwPhotoHelper.m; sourceTree = "<group>"; };
+		C55B66131A45C4DF00585865 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		C55B66161A45C63C00585865 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C55B66171A45CFF700585865 /* HWProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWProgressHUD.h; sourceTree = "<group>"; };
+		C55B66181A45CFF700585865 /* HWProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWProgressHUD.m; sourceTree = "<group>"; };
+		C55B661F1A45E69F00585865 /* HWPhotoMosaicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWPhotoMosaicViewController.h; sourceTree = "<group>"; };
+		C55B66201A45E69F00585865 /* HWPhotoMosaicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWPhotoMosaicViewController.m; sourceTree = "<group>"; };
+		C55B66271A45F7CC00585865 /* MetaPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaPhoto.h; sourceTree = "<group>"; };
+		C55B66281A45F7CC00585865 /* MetaPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaPhoto.m; sourceTree = "<group>"; };
+		C55B662A1A45F87A00585865 /* UIColor+Metrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Metrics.h"; sourceTree = "<group>"; };
+		C55B662B1A45F87A00585865 /* UIColor+Metrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Metrics.m"; sourceTree = "<group>"; };
+		C55B662D1A46020600585865 /* UIImage+HWMosaic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HWMosaic.h"; sourceTree = "<group>"; };
+		C55B662E1A46020600585865 /* UIImage+HWMosaic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HWMosaic.m"; sourceTree = "<group>"; };
+		C55B66301A46B9DB00585865 /* HWSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWSettingViewController.h; sourceTree = "<group>"; };
+		C55B66311A46B9DB00585865 /* HWSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWSettingViewController.m; sourceTree = "<group>"; };
+		F961299844C7B109C308CEE7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC9333B3B4213CC94227CAA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C55B65BE1A456FDC00585865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55B66141A45C4E000585865 /* AssetsLibrary.framework in Frameworks */,
+				DC33F60FCF2B7E9ED8B974A2 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C55B65DA1A456FDC00585865 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF967A65A2C1D68C97BA1F14 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAC9333B3B4213CC94227CAA /* Pods.debug.xcconfig */,
+				8B81C6540DA5F6D494A35428 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C55B65B81A456FDC00585865 = {
+			isa = PBXGroup;
+			children = (
+				C55B66151A45C4F800585865 /* Frameworks */,
+				C55B65C31A456FDC00585865 /* AutoMosaic */,
+				C55B65E01A456FDC00585865 /* AutoMosaicTests */,
+				C55B65C21A456FDC00585865 /* Products */,
+				AF967A65A2C1D68C97BA1F14 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		C55B65C21A456FDC00585865 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C55B65C11A456FDC00585865 /* AutoMosaic.app */,
+				C55B65DD1A456FDC00585865 /* AutoMosaicTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C55B65C31A456FDC00585865 /* AutoMosaic */ = {
+			isa = PBXGroup;
+			children = (
+				C55B65ED1A4570BD00585865 /* Classes */,
+				C55B65F91A4570BD00585865 /* Resources */,
+			);
+			path = AutoMosaic;
+			sourceTree = "<group>";
+		};
+		C55B65E01A456FDC00585865 /* AutoMosaicTests */ = {
+			isa = PBXGroup;
+			children = (
+				C55B65E31A456FDC00585865 /* AutoMosaicTests.m */,
+				C55B65E11A456FDC00585865 /* Supporting Files */,
+			);
+			path = AutoMosaicTests;
+			sourceTree = "<group>";
+		};
+		C55B65E11A456FDC00585865 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C55B65E21A456FDC00585865 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C55B65ED1A4570BD00585865 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C55B66261A45F7C100585865 /* Models */,
+				C55B65EE1A4570BD00585865 /* AppDelegate */,
+				C55B65F11A4570BD00585865 /* GlobalLibs */,
+				C55B65F21A4570BD00585865 /* Helpers */,
+				C55B65F31A4570BD00585865 /* Others */,
+				C55B65F51A4570BD00585865 /* ViewControllers */,
+				C55B65F81A4570BD00585865 /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C55B65EE1A4570BD00585865 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C55B65EF1A4570BD00585865 /* AppDelegate.h */,
+				C55B65F01A4570BD00585865 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C55B65F11A4570BD00585865 /* GlobalLibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GlobalLibs;
+			sourceTree = "<group>";
+		};
+		C55B65F21A4570BD00585865 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C55B66101A45C42400585865 /* HwPhotoHelper.h */,
+				C55B66111A45C42400585865 /* HwPhotoHelper.m */,
+				C55B66171A45CFF700585865 /* HWProgressHUD.h */,
+				C55B66181A45CFF700585865 /* HWProgressHUD.m */,
+				C55B662A1A45F87A00585865 /* UIColor+Metrics.h */,
+				C55B662B1A45F87A00585865 /* UIColor+Metrics.m */,
+				C55B662D1A46020600585865 /* UIImage+HWMosaic.h */,
+				C55B662E1A46020600585865 /* UIImage+HWMosaic.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C55B65F31A4570BD00585865 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				C55B65F41A4570BD00585865 /* main.m */,
+				C55B66161A45C63C00585865 /* PrefixHeader.pch */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		C55B65F51A4570BD00585865 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C55B65F61A4570BD00585865 /* ViewController.h */,
+				C55B65F71A4570BD00585865 /* ViewController.m */,
+				C55B661F1A45E69F00585865 /* HWPhotoMosaicViewController.h */,
+				C55B66201A45E69F00585865 /* HWPhotoMosaicViewController.m */,
+				C55B66301A46B9DB00585865 /* HWSettingViewController.h */,
+				C55B66311A46B9DB00585865 /* HWSettingViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C55B65F81A4570BD00585865 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C55B65F91A4570BD00585865 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C55B65FA1A4570BD00585865 /* Data */,
+				C55B66031A4570BD00585865 /* Images */,
+				C55B66051A4570BD00585865 /* Sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C55B65FA1A4570BD00585865 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C55B65FB1A4570BD00585865 /* AutoMosaic.xcdatamodeld */,
+				C55B65FD1A4570BD00585865 /* LaunchScreen.xib */,
+				C55B65FF1A4570BD00585865 /* Main.storyboard */,
+				C55B66011A4570BD00585865 /* Info.plist */,
+				C55B66021A4570BD00585865 /* Strings */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C55B66021A4570BD00585865 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		C55B66031A4570BD00585865 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C55B66041A4570BD00585865 /* Images.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C55B66051A4570BD00585865 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		C55B66151A45C4F800585865 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C55B66131A45C4DF00585865 /* AssetsLibrary.framework */,
+				F961299844C7B109C308CEE7 /* libPods.a */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		C55B66261A45F7C100585865 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C55B66271A45F7CC00585865 /* MetaPhoto.h */,
+				C55B66281A45F7CC00585865 /* MetaPhoto.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C55B65C01A456FDC00585865 /* AutoMosaic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C55B65E71A456FDC00585865 /* Build configuration list for PBXNativeTarget "AutoMosaic" */;
+			buildPhases = (
+				6B044ADBBA61CC5E325BC788 /* Check Pods Manifest.lock */,
+				C55B65BD1A456FDC00585865 /* Sources */,
+				C55B65BE1A456FDC00585865 /* Frameworks */,
+				C55B65BF1A456FDC00585865 /* Resources */,
+				7384488F630BE9A3E705AD62 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutoMosaic;
+			productName = AutoMosaic;
+			productReference = C55B65C11A456FDC00585865 /* AutoMosaic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C55B65DC1A456FDC00585865 /* AutoMosaicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C55B65EA1A456FDC00585865 /* Build configuration list for PBXNativeTarget "AutoMosaicTests" */;
+			buildPhases = (
+				C55B65D91A456FDC00585865 /* Sources */,
+				C55B65DA1A456FDC00585865 /* Frameworks */,
+				C55B65DB1A456FDC00585865 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C55B65DF1A456FDC00585865 /* PBXTargetDependency */,
+			);
+			name = AutoMosaicTests;
+			productName = AutoMosaicTests;
+			productReference = C55B65DD1A456FDC00585865 /* AutoMosaicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C55B65B91A456FDC00585865 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HW;
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "HW Inc";
+				TargetAttributes = {
+					C55B65C01A456FDC00585865 = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 47NZJ66X5R;
+					};
+					C55B65DC1A456FDC00585865 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = C55B65C01A456FDC00585865;
+					};
+				};
+			};
+			buildConfigurationList = C55B65BC1A456FDC00585865 /* Build configuration list for PBXProject "AutoMosaic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C55B65B81A456FDC00585865;
+			productRefGroup = C55B65C21A456FDC00585865 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C55B65C01A456FDC00585865 /* AutoMosaic */,
+				C55B65DC1A456FDC00585865 /* AutoMosaicTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C55B65BF1A456FDC00585865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55B661A1A45D38C00585865 /* LaunchScreen.xib in Resources */,
+				C55B661B1A45D38C00585865 /* Main.storyboard in Resources */,
+				C55B660D1A4570BD00585865 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C55B65DB1A456FDC00585865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6B044ADBBA61CC5E325BC788 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7384488F630BE9A3E705AD62 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C55B65BD1A456FDC00585865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55B66091A4570BD00585865 /* AutoMosaic.xcdatamodeld in Sources */,
+				C55B66191A45CFF700585865 /* HWProgressHUD.m in Sources */,
+				C55B662C1A45F87A00585865 /* UIColor+Metrics.m in Sources */,
+				C55B66081A4570BD00585865 /* ViewController.m in Sources */,
+				C55B66211A45E69F00585865 /* HWPhotoMosaicViewController.m in Sources */,
+				C55B66071A4570BD00585865 /* main.m in Sources */,
+				C55B662F1A46020600585865 /* UIImage+HWMosaic.m in Sources */,
+				C55B66321A46B9DB00585865 /* HWSettingViewController.m in Sources */,
+				C55B66061A4570BD00585865 /* AppDelegate.m in Sources */,
+				C55B66121A45C42400585865 /* HwPhotoHelper.m in Sources */,
+				C55B66291A45F7CC00585865 /* MetaPhoto.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C55B65D91A456FDC00585865 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C55B65E41A456FDC00585865 /* AutoMosaicTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C55B65DF1A456FDC00585865 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C55B65C01A456FDC00585865 /* AutoMosaic */;
+			targetProxy = C55B65DE1A456FDC00585865 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C55B65FD1A4570BD00585865 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C55B65FE1A4570BD00585865 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		C55B65FF1A4570BD00585865 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C55B66001A4570BD00585865 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C55B65E51A456FDC00585865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C55B65E61A456FDC00585865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C55B65E81A456FDC00585865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAC9333B3B4213CC94227CAA /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
+				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		C55B65E91A456FDC00585865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B81C6540DA5F6D494A35428 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
+				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		C55B65EB1A456FDC00585865 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AutoMosaicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoMosaic.app/AutoMosaic";
+			};
+			name = Debug;
+		};
+		C55B65EC1A456FDC00585865 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AutoMosaicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoMosaic.app/AutoMosaic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C55B65BC1A456FDC00585865 /* Build configuration list for PBXProject "AutoMosaic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C55B65E51A456FDC00585865 /* Debug */,
+				C55B65E61A456FDC00585865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C55B65E71A456FDC00585865 /* Build configuration list for PBXNativeTarget "AutoMosaic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C55B65E81A456FDC00585865 /* Debug */,
+				C55B65E91A456FDC00585865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C55B65EA1A456FDC00585865 /* Build configuration list for PBXNativeTarget "AutoMosaicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C55B65EB1A456FDC00585865 /* Debug */,
+				C55B65EC1A456FDC00585865 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C55B65FB1A4570BD00585865 /* AutoMosaic.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C55B65FC1A4570BD00585865 /* AutoMosaic.xcdatamodel */,
+			);
+			currentVersion = C55B65FC1A4570BD00585865 /* AutoMosaic.xcdatamodel */;
+			path = AutoMosaic.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C55B65B91A456FDC00585865 /* Project object */;
+}
