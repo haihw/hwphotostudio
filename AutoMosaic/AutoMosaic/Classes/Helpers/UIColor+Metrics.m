@@ -34,7 +34,8 @@
     4 * deltaG * deltaG +
     (2 + (255 - Rm)/256) * deltaB * deltaB;
     
-    return sqrt(value);
+//    return sqrt(value);
+    return value; //improve performance
 }
 
 @end

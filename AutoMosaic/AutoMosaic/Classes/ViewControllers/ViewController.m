@@ -43,19 +43,22 @@
                                          dimBackground:YES
                                               animated:YES
                                              withTitle:@"Scanning library..."];
-    libraryMetaPhotos = [NSMutableArray array];
-    [HwPhotoHelper getAllThumbnailPhotosFromLibraryWithResponse:^(NSMutableArray *thumbnails) {
-        _lbPhotoNumber.text = [NSString stringWithFormat:@"%ld photos loaded", thumbnails.count];
-        //process thumbnails
-        NSInteger imageCount = thumbnails.count;
-        __block NSInteger index = 0;
-        for (UIImage *image in thumbnails)
-        {
-            MetaPhoto *metaPhoto = [[MetaPhoto alloc] init];
-            metaPhoto.photo = image;
-            metaPhoto.averageColor = image.mergedColor;
-            [libraryMetaPhotos addObject:metaPhoto];
-//
+    hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        libraryMetaPhotos = [NSMutableArray array];
+        [HwPhotoHelper getAllThumbnailPhotosFromLibraryWithResponse:^(NSMutableArray *thumbnails) {
+            //process thumbnails
+            NSInteger imageCount = thumbnails.count;
+            __block NSInteger index = 0;
+            for (UIImage *image in thumbnails)
+            {
+                MetaPhoto *metaPhoto = [[MetaPhoto alloc] init];
+                metaPhoto.photo = image;
+                metaPhoto.averageColor = image.mergedColor;
+                [libraryMetaPhotos addObject:metaPhoto];
+                index ++;
+                hud.detailsLabelText = [NSString stringWithFormat: @"Processing %ld/%ld...", index, imageCount];
+                hud.progress = 1.0f * index/imageCount;
 //            GPUImageAverageColor *averageColor = [[GPUImageAverageColor alloc] init];
 //            [averageColor setColorAverageProcessingFinishedBlock:^(CGFloat redComponent, CGFloat greenComponent, CGFloat blueComponent, CGFloat alphaComponent, CMTime frameTime) {
 //                UIColor *color = [UIColor colorWithRed:redComponent green:greenComponent blue:blueComponent alpha:alphaComponent];
@@ -72,14 +75,17 @@
 //                hud.detailsLabelText = [NSString stringWithFormat: @"Processing %ld/%ld...", index, imageCount];
 //
 //            }];
-            
+
 //            [averageColor imageByFilteringImage:image];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [HWProgressHUD hideHUDForView:self.view animated:YES];
-        });
-        
-    }];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [HWProgressHUD hideHUDForView:self.view animated:YES];
+                _lbPhotoNumber.text = [NSString stringWithFormat:@"%ld photos loaded", thumbnails.count];
+
+            });
+            
+        }];
+    });
 
 }
 - (IBAction)btnScanLibraryTapped:(id)sender {

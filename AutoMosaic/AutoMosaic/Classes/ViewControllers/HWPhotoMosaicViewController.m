@@ -40,21 +40,25 @@
 
 - (IBAction)btnProcessTapped:(id)sender {
     HWProgressHUD *hud = [HWProgressHUD showHUDAddedTo:self.view animated:YES withTitle:@"Processing"];
-    NSDictionary *params = @{
-                             @"metric": @"1",
-                             @"dx":@16,
-                             @"dy":@16
-                             };
-    [_inputImage createMosaicWithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
-        if (mosaicImage){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                _imageView.image = mosaicImage;
-                UIImageWriteToSavedPhotosAlbum(mosaicImage, nil, nil, nil);
-                [HWProgressHUD hideHUDForView:self.view animated:YES];
-            });
-        }
-        NSLog(@"Processing %0.1f", percentage*100);
-        hud.detailsLabelText = [NSString stringWithFormat:@"Processing %0.1f", percentage*100];
-    }];
+    hud.mode = MBProgressHUDModeDeterminate;
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        // Do something...
+        NSDictionary *params = @{
+                                 @"metric": @"1", //riemersmaDistanceTo
+                                 @"dx":@16,
+                                 @"dy":@16
+                                 };
+        [_inputImage createMosaicWithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
+            if (mosaicImage){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _imageView.image = mosaicImage;
+                    UIImageWriteToSavedPhotosAlbum(mosaicImage, nil, nil, nil);
+                    [HWProgressHUD hideHUDForView:self.view animated:YES];
+                });
+            }
+//            hud.detailsLabelText = [NSString stringWithFormat:@"Processing %0.1f%%", percentage*100];
+            hud.progress = percentage;
+        }];
+    });
 }
 @end
