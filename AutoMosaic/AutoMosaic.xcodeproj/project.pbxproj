@@ -23,6 +23,10 @@
 		C55B662C1A45F87A00585865 /* UIColor+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662B1A45F87A00585865 /* UIColor+Metrics.m */; };
 		C55B662F1A46020600585865 /* UIImage+HWMosaic.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662E1A46020600585865 /* UIImage+HWMosaic.m */; };
 		C55B66321A46B9DB00585865 /* HWSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66311A46B9DB00585865 /* HWSettingViewController.m */; };
+		C5F5F4171A4F1F6F00DFC256 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5F5F4161A4F1F6F00DFC256 /* iTunesArtwork@2x.png */; };
+		C5F5F47A1A4FA72300DFC256 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4751A4FA72300DFC256 /* UIImage+Alpha.m */; };
+		C5F5F47B1A4FA72300DFC256 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4771A4FA72300DFC256 /* UIImage+Resize.m */; };
+		C5F5F47C1A4FA72300DFC256 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4791A4FA72300DFC256 /* UIImage+RoundedCorner.m */; };
 		DC33F60FCF2B7E9ED8B974A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F961299844C7B109C308CEE7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +72,13 @@
 		C55B662E1A46020600585865 /* UIImage+HWMosaic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HWMosaic.m"; sourceTree = "<group>"; };
 		C55B66301A46B9DB00585865 /* HWSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWSettingViewController.h; sourceTree = "<group>"; };
 		C55B66311A46B9DB00585865 /* HWSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWSettingViewController.m; sourceTree = "<group>"; };
+		C5F5F4161A4F1F6F00DFC256 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "../../../../../../Documents/App Icon [Squared]/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		C5F5F4741A4FA72300DFC256 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		C5F5F4751A4FA72300DFC256 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		C5F5F4761A4FA72300DFC256 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		C5F5F4771A4FA72300DFC256 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		C5F5F4781A4FA72300DFC256 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		C5F5F4791A4FA72300DFC256 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		F961299844C7B109C308CEE7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC9333B3B4213CC94227CAA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +191,7 @@
 		C55B65F21A4570BD00585865 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C5F5F4731A4FA72300DFC256 /* UIImage-categories */,
 				C55B66101A45C42400585865 /* HwPhotoHelper.h */,
 				C55B66111A45C42400585865 /* HwPhotoHelper.m */,
 				C55B66171A45CFF700585865 /* HWProgressHUD.h */,
@@ -253,6 +265,7 @@
 		C55B66031A4570BD00585865 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C5F5F4161A4F1F6F00DFC256 /* iTunesArtwork@2x.png */,
 				C55B66041A4570BD00585865 /* Images.xcassets */,
 			);
 			path = Images;
@@ -283,12 +296,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C5F5F4731A4FA72300DFC256 /* UIImage-categories */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5F4741A4FA72300DFC256 /* UIImage+Alpha.h */,
+				C5F5F4751A4FA72300DFC256 /* UIImage+Alpha.m */,
+				C5F5F4761A4FA72300DFC256 /* UIImage+Resize.h */,
+				C5F5F4771A4FA72300DFC256 /* UIImage+Resize.m */,
+				C5F5F4781A4FA72300DFC256 /* UIImage+RoundedCorner.h */,
+				C5F5F4791A4FA72300DFC256 /* UIImage+RoundedCorner.m */,
+			);
+			path = "UIImage-categories";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C55B65C01A456FDC00585865 /* AutoMosaic */ = {
+		C55B65C01A456FDC00585865 /* Mosaicify */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C55B65E71A456FDC00585865 /* Build configuration list for PBXNativeTarget "AutoMosaic" */;
+			buildConfigurationList = C55B65E71A456FDC00585865 /* Build configuration list for PBXNativeTarget "Mosaicify" */;
 			buildPhases = (
 				6B044ADBBA61CC5E325BC788 /* Check Pods Manifest.lock */,
 				C55B65BD1A456FDC00585865 /* Sources */,
@@ -300,7 +326,7 @@
 			);
 			dependencies = (
 			);
-			name = AutoMosaic;
+			name = Mosaicify;
 			productName = AutoMosaic;
 			productReference = C55B65C11A456FDC00585865 /* AutoMosaic.app */;
 			productType = "com.apple.product-type.application";
@@ -356,7 +382,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C55B65C01A456FDC00585865 /* AutoMosaic */,
+				C55B65C01A456FDC00585865 /* Mosaicify */,
 				C55B65DC1A456FDC00585865 /* AutoMosaicTests */,
 			);
 		};
@@ -370,6 +396,7 @@
 				C55B661A1A45D38C00585865 /* LaunchScreen.xib in Resources */,
 				C55B661B1A45D38C00585865 /* Main.storyboard in Resources */,
 				C55B660D1A4570BD00585865 /* Images.xcassets in Resources */,
+				C5F5F4171A4F1F6F00DFC256 /* iTunesArtwork@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,13 +449,16 @@
 			files = (
 				C55B66091A4570BD00585865 /* AutoMosaic.xcdatamodeld in Sources */,
 				C55B66191A45CFF700585865 /* HWProgressHUD.m in Sources */,
+				C5F5F47C1A4FA72300DFC256 /* UIImage+RoundedCorner.m in Sources */,
 				C55B662C1A45F87A00585865 /* UIColor+Metrics.m in Sources */,
 				C55B66081A4570BD00585865 /* ViewController.m in Sources */,
 				C55B66211A45E69F00585865 /* HWPhotoMosaicViewController.m in Sources */,
 				C55B66071A4570BD00585865 /* main.m in Sources */,
 				C55B662F1A46020600585865 /* UIImage+HWMosaic.m in Sources */,
 				C55B66321A46B9DB00585865 /* HWSettingViewController.m in Sources */,
+				C5F5F47A1A4FA72300DFC256 /* UIImage+Alpha.m in Sources */,
 				C55B66061A4570BD00585865 /* AppDelegate.m in Sources */,
+				C5F5F47B1A4FA72300DFC256 /* UIImage+Resize.m in Sources */,
 				C55B66121A45C42400585865 /* HwPhotoHelper.m in Sources */,
 				C55B66291A45F7CC00585865 /* MetaPhoto.m in Sources */,
 			);
@@ -447,7 +477,7 @@
 /* Begin PBXTargetDependency section */
 		C55B65DF1A456FDC00585865 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C55B65C01A456FDC00585865 /* AutoMosaic */;
+			target = C55B65C01A456FDC00585865 /* Mosaicify */;
 			targetProxy = C55B65DE1A456FDC00585865 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -628,7 +658,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C55B65E71A456FDC00585865 /* Build configuration list for PBXNativeTarget "AutoMosaic" */ = {
+		C55B65E71A456FDC00585865 /* Build configuration list for PBXNativeTarget "Mosaicify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C55B65E81A456FDC00585865 /* Debug */,

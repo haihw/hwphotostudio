@@ -45,10 +45,12 @@
         // Do something...
         NSDictionary *params = @{
                                  @"metric": @"1", //riemersmaDistanceTo
-                                 @"dx":@16,
-                                 @"dy":@16
+                                 @"dx":@32,
+                                 @"dy":@32,
+                                 @"width":@100,
+                                 @"height":@100,
                                  };
-        [_inputImage createMosaicWithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
+        [_inputImage createMosaic2WithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
             if (mosaicImage){
                 dispatch_async(dispatch_get_main_queue(), ^{
                     _imageView.image = mosaicImage;
@@ -56,7 +58,7 @@
                     [HWProgressHUD hideHUDForView:self.view animated:YES];
                 });
             }
-//            hud.detailsLabelText = [NSString stringWithFormat:@"Processing %0.1f%%", percentage*100];
+            hud.detailsLabelText = [NSString stringWithFormat:@"Processing %0.1f%%", percentage*100];
             hud.progress = percentage;
         }];
     });

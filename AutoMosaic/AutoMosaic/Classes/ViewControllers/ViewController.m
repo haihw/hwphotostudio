@@ -50,6 +50,7 @@
             //process thumbnails
             NSInteger imageCount = thumbnails.count;
             __block NSInteger index = 0;
+            NSDate *startDate = [NSDate date];
             for (UIImage *image in thumbnails)
             {
                 MetaPhoto *metaPhoto = [[MetaPhoto alloc] init];
@@ -59,25 +60,9 @@
                 index ++;
                 hud.detailsLabelText = [NSString stringWithFormat: @"Processing %ld/%ld...", index, imageCount];
                 hud.progress = 1.0f * index/imageCount;
-//            GPUImageAverageColor *averageColor = [[GPUImageAverageColor alloc] init];
-//            [averageColor setColorAverageProcessingFinishedBlock:^(CGFloat redComponent, CGFloat greenComponent, CGFloat blueComponent, CGFloat alphaComponent, CMTime frameTime) {
-//                UIColor *color = [UIColor colorWithRed:redComponent green:greenComponent blue:blueComponent alpha:alphaComponent];
-//                MetaPhoto *metaPhoto = [[MetaPhoto alloc] init];
-//                metaPhoto.photo = image;
-//                metaPhoto.averageColor = color;
-//                [libraryMetaPhotos addObject:metaPhoto];
-//                index ++;
-//                NSLog(@"processed %ld", index);
-//                CGFloat r, g, b, a;
-//                [image.mergedColor getRed:&r green:&g blue:&b alpha:&a];
-//                CGFloat rr, gg, bb, aa;
-//                [image.onePixelColor getRed:&rr green:&gg blue:&bb alpha:&aa];
-//                hud.detailsLabelText = [NSString stringWithFormat: @"Processing %ld/%ld...", index, imageCount];
-//
-//            }];
-
-//            [averageColor imageByFilteringImage:image];
             }
+            NSLog(@"Scan library done: %f", -[startDate timeIntervalSinceNow]);
+
             dispatch_async(dispatch_get_main_queue(), ^{
                 [HWProgressHUD hideHUDForView:self.view animated:YES];
                 _lbPhotoNumber.text = [NSString stringWithFormat:@"%ld photos loaded", thumbnails.count];

@@ -11,9 +11,91 @@
 #import "UIColor+Metrics.h"
 #import "GPUImage.h"
 #import "UIColor+Distance.h"
+#import "UIImage+Resize.h"
 @implementation UIImage (HWMosaic)
+- (void)createMosaic2WithMetaPhotos:(NSArray *)metaPhotos params:(NSDictionary *)params progress: (void(^)(float percentage, UIImage *mosaicImage)) block
+{
+    NSDate *startTime = [NSDate date];
+    float dw = 16; //metaPhoto.photo.size.width;
+    float dh = 16; //metaPhoto.photo.size.height;
+    
+    int sampleWidth, sampleHeight;
+    sampleWidth = 320;
+    sampleHeight = 320;
+
+    NSString *metricsMethod = @"1";
+    if (params)
+    {
+        dw = [[params objectForKey:@"dx"] floatValue];
+        dh = [[params objectForKey:@"dy"] floatValue];
+        
+        sampleWidth = [[params objectForKey:@"width"] intValue];
+        sampleHeight = [[params objectForKey:@"height"] intValue];
+        
+        metricsMethod = [params objectForKey:@"metric"];
+    }
+    //resize image to desired size
+    UIImage *sampleImage = [self resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(sampleWidth, sampleHeight) interpolationQuality: kCGInterpolationHigh];
+    UIImageWriteToSavedPhotosAlbum(sampleImage, nil, nil, nil);
+    sampleWidth = sampleImage.size.width;
+    sampleHeight = sampleImage.size.height;
+
+    //calculate the final image size
+    CGSize finalSize = CGSizeMake(sampleWidth * dw, sampleHeight * dh);
+    //create context
+    UIGraphicsBeginImageContext(finalSize);
+    //draw input image as background
+    [self drawInRect:CGRectMake(0, 0, finalSize.width, finalSize.height)];
+    //prepare pallete for method number 2
+    NSArray *palette = [metaPhotos valueForKey:@"averageColor"];
+    NSUInteger bytesPerPixel = 4;
+    NSUInteger bytesPerRow = bytesPerPixel * sampleWidth;
+    unsigned char * rawData = [sampleImage rawDataWith:bytesPerPixel];
+    for (int h = 0; h < sampleHeight; h++)
+    {
+        for (int w = 0; w < sampleWidth; w++)
+        {
+            int location = h*sampleWidth + w;
+            float percentage = 1.0*location/sampleWidth/sampleHeight;
+            block (percentage, nil);
+            MetaPhoto *matched;
+            
+            //get color value
+            NSUInteger byteIndex = (bytesPerRow * h) + w * bytesPerPixel;
+
+            CGFloat red = (rawData[byteIndex]     * 1.0) / 255.0;
+            CGFloat green = (rawData[byteIndex + 1] * 1.0) / 255.0;
+            CGFloat blue = (rawData[byteIndex + 2] * 1.0) / 255.0;
+            CGFloat alpha = (rawData[byteIndex + 3] * 1.0) / 255.0;
+            UIColor *averageColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+            
+            if ([metricsMethod isEqualToString:@"1"]){
+                matched = [self matchedPhotoOfColor:averageColor from:metaPhotos];
+            } else if ([metricsMethod isEqualToString:@"2"])
+            {
+                UIColor *matchedColor = [averageColor closestColorInPalette:palette];
+                NSInteger index = [palette indexOfObject:matchedColor];
+                matched = metaPhotos[index];
+            }
+            CGRect drawRect = CGRectMake(w*dw, h*dh, dw, dh);
+            [matched.photo drawInRect:drawRect];
+        }
+    }
+    free(rawData);
+    UIImage *combined = UIGraphicsGetImageFromCurrentImageContext();
+    NSLog(@"Process Time: %f", [startTime timeIntervalSinceNow]);
+    block (1, combined);
+    UIGraphicsEndImageContext();
+    
+}
+
+/*
+ Method 1:
+  - replace a part of image with closest image in library
+ */
 - (void)createMosaicWithMetaPhotos:(NSArray *)metaPhotos params:(NSDictionary *)params progress: (void(^)(float percentage, UIImage *mosaicImage)) block
 {
+    NSDate *startTime = [NSDate date];
     float dx = 16; //metaPhoto.photo.size.width;
     float dy = 16; //metaPhoto.photo.size.height;
     NSString *metricsMethod = @"1";
@@ -55,8 +137,10 @@
         }
     }
     UIImage *combined = UIGraphicsGetImageFromCurrentImageContext();
+    NSLog(@"Process Time: %f", [startTime timeIntervalSinceNow]);
     block (1, combined);
     UIGraphicsEndImageContext();
+    
 }
 - (MetaPhoto *)matchedPhotoOfColor:(UIColor *)color from:(NSArray *)metaPhotoDB
 {
@@ -73,27 +157,33 @@
     }
     return nearestMetaPhoto;
 }
-- (UIColor *)mergedColor
+- (unsigned char *)rawDataWith:(NSUInteger)bytesPerPixel
 {
-    // First get the image into your data buffer
     CGImageRef imageRef = [self CGImage];
     NSUInteger width = CGImageGetWidth(imageRef);
     NSUInteger height = CGImageGetHeight(imageRef);
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     unsigned char *rawData = (unsigned char*) calloc(height * width * 4, sizeof(unsigned char));
-    NSUInteger bytesPerPixel = 4;
-    NSUInteger bytesPerRow = bytesPerPixel * width;
-    NSUInteger bitsPerComponent = 8;
-    CGContextRef context = CGBitmapContextCreate(rawData, width, height,
-                                                 bitsPerComponent, bytesPerRow, colorSpace,
-                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    CGContextRef context = CGBitmapContextCreate(rawData,
+                                                 width,
+                                                 height,
+                                                 CGImageGetBitsPerComponent(imageRef),
+                                                 CGImageGetBytesPerRow(imageRef),
+                                                 CGImageGetColorSpace(imageRef),
+                                                 CGImageGetBitmapInfo(imageRef));
     CGColorSpaceRelease(colorSpace);
     
     CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
     CGContextRelease(context);
-    
+    return rawData;
+}
+- (UIColor *)mergedColor
+{
+    NSUInteger bytesPerPixel = 4;
+    // First get the image into your data buffer
+    unsigned char *rawData = [self rawDataWith: bytesPerPixel];
     // Now your rawData contains the image data in the RGBA8888 pixel format.
-    NSUInteger totalPixel = width * height;
+    NSUInteger totalPixel = self.size.width * self.size.height;
     CGFloat totalRed, totalGreen, totalBlue;
 
     for (int i = 0 ; i < totalPixel ; i++)
@@ -123,8 +213,13 @@
     bitmapByteCount = (bitmapBytesPerRow * height);
     memset(bitmapData, 0, bitmapByteCount);
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate (bitmapData,width,height,8,bitmapBytesPerRow,
-                                                  colorspace,kCGBitmapByteOrder32Little|kCGImageAlphaPremultipliedFirst);
+    CGContextRef context = CGBitmapContextCreate(bitmapData,
+                                                 width,
+                                                 height,
+                                                 CGImageGetBitsPerComponent(rawImageRef),
+                                                 CGImageGetBytesPerRow(rawImageRef),
+                                                 CGImageGetColorSpace(rawImageRef),
+                                                 CGImageGetBitmapInfo(rawImageRef));
     CGColorSpaceRelease(colorspace);
     CGContextSetBlendMode(context, kCGBlendModeCopy);
     CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
@@ -136,16 +231,4 @@
                            alpha:1];
 
 }
-- (UIColor *)averageColor {
-    CGSize size = {1, 1};
-    UIGraphicsBeginImageContext(size);
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSetInterpolationQuality(ctx, kCGInterpolationMedium);
-    [self drawInRect:(CGRect){.size = size} blendMode:kCGBlendModeCopy alpha:1];
-    uint8_t *data = CGBitmapContextGetData(ctx);
-    UIColor *color = [UIColor colorWithRed:data[0] / 255.f green:data[1] / 255.f blue:data[2] / 255.f alpha:1];
-    UIGraphicsEndImageContext();
-    return color;
-}
-
 @end
