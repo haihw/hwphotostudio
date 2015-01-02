@@ -1,0 +1,13 @@
+PODS:
+  - iRate (1.11.3)
+  - MBProgressHUD (0.9)
+
+DEPENDENCIES:
+  - iRate
+  - MBProgressHUD
+
+SPEC CHECKSUMS:
+  iRate: 5e1978bac8b3f3f0296dbeccc0dd7b50e6e50657
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+
+COCOAPODS: 0.35.0
