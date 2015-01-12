@@ -11,6 +11,11 @@
 		C523DB121A5667C0007426A0 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C523DB111A5667C0007426A0 /* iAd.framework */; };
 		C523DB141A566AC0007426A0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C523DB131A566AC0007426A0 /* AssetsLibrary.framework */; };
 		C523DB161A567311007426A0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C523DB151A567311007426A0 /* MessageUI.framework */; };
+		C529B68D1A56A964008BE3FF /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C529B68C1A56A964008BE3FF /* PhotosUI.framework */; };
+		C529B68F1A56A964008BE3FF /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C529B68E1A56A964008BE3FF /* Photos.framework */; };
+		C529B6951A56A965008BE3FF /* PhotoEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C529B6941A56A965008BE3FF /* PhotoEditingViewController.m */; };
+		C529B6971A56A965008BE3FF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C529B6961A56A965008BE3FF /* MainInterface.storyboard */; };
+		C529B69A1A56A965008BE3FF /* extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C529B68B1A56A964008BE3FF /* extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C57E354E1A563B7200C71845 /* LightestResizeImageAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C57E354D1A563B7200C71845 /* LightestResizeImageAppTests.m */; };
 		C57E356B1A563C1100C71845 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C57E355A1A563C1100C71845 /* main.m */; };
 		C57E356C1A563C1100C71845 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57E355D1A563C1100C71845 /* ViewController.m */; };
@@ -30,6 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C529B6981A56A965008BE3FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C57E35261A563B7100C71845 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C529B68A1A56A964008BE3FF;
+			remoteInfo = extension;
+		};
 		C57E35481A563B7200C71845 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C57E35261A563B7100C71845 /* Project object */;
@@ -39,11 +51,32 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C529B69E1A56A965008BE3FF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C529B69A1A56A965008BE3FF /* extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		650FFB04C2DA10C3DC6E883A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C523DB111A5667C0007426A0 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C523DB131A566AC0007426A0 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		C523DB151A567311007426A0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C529B68B1A56A964008BE3FF /* extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C529B68C1A56A964008BE3FF /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		C529B68E1A56A964008BE3FF /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		C529B6921A56A964008BE3FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C529B6931A56A964008BE3FF /* PhotoEditingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoEditingViewController.h; sourceTree = "<group>"; };
+		C529B6941A56A965008BE3FF /* PhotoEditingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoEditingViewController.m; sourceTree = "<group>"; };
+		C529B6961A56A965008BE3FF /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		C57E352E1A563B7100C71845 /* LightestResizeImageApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightestResizeImageApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57E35471A563B7200C71845 /* LightestResizeImageAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightestResizeImageAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57E354C1A563B7200C71845 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +115,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C529B6881A56A964008BE3FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C529B68D1A56A964008BE3FF /* PhotosUI.framework in Frameworks */,
+				C529B68F1A56A964008BE3FF /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C57E352B1A563B7100C71845 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -112,9 +154,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C529B6901A56A964008BE3FF /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				C529B6931A56A964008BE3FF /* PhotoEditingViewController.h */,
+				C529B6941A56A965008BE3FF /* PhotoEditingViewController.m */,
+				C529B6961A56A965008BE3FF /* MainInterface.storyboard */,
+				C529B6911A56A964008BE3FF /* Supporting Files */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		C529B6911A56A964008BE3FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C529B6921A56A964008BE3FF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C57E35251A563B7100C71845 = {
 			isa = PBXGroup;
 			children = (
+				C529B6901A56A964008BE3FF /* extension */,
 				C57E35721A563C1A00C71845 /* Frameworks */,
 				C57E35301A563B7100C71845 /* LightestResizeImageApp */,
 				C57E354A1A563B7200C71845 /* LightestResizeImageAppTests */,
@@ -128,6 +190,7 @@
 			children = (
 				C57E352E1A563B7100C71845 /* LightestResizeImageApp.app */,
 				C57E35471A563B7200C71845 /* LightestResizeImageAppTests.xctest */,
+				C529B68B1A56A964008BE3FF /* extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -256,6 +319,8 @@
 				C523DB131A566AC0007426A0 /* AssetsLibrary.framework */,
 				C523DB111A5667C0007426A0 /* iAd.framework */,
 				D9DB2AE492D7530F8FBE88D0 /* libPods.a */,
+				C529B68C1A56A964008BE3FF /* PhotosUI.framework */,
+				C529B68E1A56A964008BE3FF /* Photos.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -279,6 +344,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C529B68A1A56A964008BE3FF /* extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C529B69D1A56A965008BE3FF /* Build configuration list for PBXNativeTarget "extension" */;
+			buildPhases = (
+				C529B6871A56A964008BE3FF /* Sources */,
+				C529B6881A56A964008BE3FF /* Frameworks */,
+				C529B6891A56A964008BE3FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = extension;
+			productName = extension;
+			productReference = C529B68B1A56A964008BE3FF /* extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C57E352D1A563B7100C71845 /* LightestResizeImageApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C57E35511A563B7200C71845 /* Build configuration list for PBXNativeTarget "LightestResizeImageApp" */;
@@ -288,10 +370,12 @@
 				C57E352B1A563B7100C71845 /* Frameworks */,
 				C57E352C1A563B7100C71845 /* Resources */,
 				89F63DB53D6C233AD168B59D /* Copy Pods Resources */,
+				C529B69E1A56A965008BE3FF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C529B6991A56A965008BE3FF /* PBXTargetDependency */,
 			);
 			name = LightestResizeImageApp;
 			productName = LightestResizeImageApp;
@@ -325,6 +409,9 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Hai Hw";
 				TargetAttributes = {
+					C529B68A1A56A964008BE3FF = {
+						CreatedOnToolsVersion = 6.1;
+					};
 					C57E352D1A563B7100C71845 = {
 						CreatedOnToolsVersion = 6.1;
 					};
@@ -349,11 +436,20 @@
 			targets = (
 				C57E352D1A563B7100C71845 /* LightestResizeImageApp */,
 				C57E35461A563B7200C71845 /* LightestResizeImageAppTests */,
+				C529B68A1A56A964008BE3FF /* extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C529B6891A56A964008BE3FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C529B6971A56A965008BE3FF /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C57E352C1A563B7100C71845 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +503,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C529B6871A56A964008BE3FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C529B6951A56A965008BE3FF /* PhotoEditingViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C57E352A1A563B7100C71845 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -437,6 +541,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C529B6991A56A965008BE3FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C529B68A1A56A964008BE3FF /* extension */;
+			targetProxy = C529B6981A56A965008BE3FF /* PBXContainerItemProxy */;
+		};
 		C57E35491A563B7200C71845 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C57E352D1A563B7100C71845 /* LightestResizeImageApp */;
@@ -464,6 +573,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C529B69B1A56A965008BE3FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C529B69C1A56A965008BE3FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = extension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		C57E354F1A563B7200C71845 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -605,6 +738,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C529B69D1A56A965008BE3FF /* Build configuration list for PBXNativeTarget "extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C529B69B1A56A965008BE3FF /* Debug */,
+				C529B69C1A56A965008BE3FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C57E35291A563B7100C71845 /* Build configuration list for PBXProject "LightestResizeImageApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
