@@ -1,19 +1,19 @@
 PODS:
-  - GPUImage (0.1.7)
+  - ASValueTrackingSlider (0.11.2)
   - iRate (1.11.3)
   - JTSImageViewController (1.4)
   - MBProgressHUD (0.9)
   - MTColorDistance (0.0.3)
 
 DEPENDENCIES:
-  - GPUImage
+  - ASValueTrackingSlider
   - iRate
   - JTSImageViewController
   - MBProgressHUD
   - MTColorDistance
 
 SPEC CHECKSUMS:
-  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  ASValueTrackingSlider: 45c9f78252da60de01d8f2afe869aaf90dd978d9
   iRate: 5e1978bac8b3f3f0296dbeccc0dd7b50e6e50657
   JTSImageViewController: 6a367b144e257db02cdfacdba78d684377d3777b
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8

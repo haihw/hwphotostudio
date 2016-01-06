@@ -10,7 +10,6 @@
 
 @interface UIImage (HWMosaic)
 - (void)createMosaicWithMetaPhotos:(NSArray *)metaPhotos params:(NSDictionary *)params progress: (void(^)(float percentage, UIImage *mosaicImage)) block;
-- (void)createMosaic2WithMetaPhotos:(NSArray *)metaPhotos params:(NSDictionary *)params progress: (void(^)(float percentage, UIImage *mosaicImage)) block;
 
 - (UIColor *)mergedColor;
 - (UIColor *)onePixelColor;

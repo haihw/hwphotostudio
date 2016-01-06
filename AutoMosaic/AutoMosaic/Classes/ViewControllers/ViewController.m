@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "HwPhotoHelper.h"
 #import "HWProgressHUD.h"
-#import "GPUImage.h"
 #import "HWPhotoMosaicViewController.h"
 #import "MetaPhoto.h"
 #import "UIImage+HWMosaic.h"

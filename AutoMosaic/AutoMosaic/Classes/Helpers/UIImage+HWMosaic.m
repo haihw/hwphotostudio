@@ -9,7 +9,6 @@
 #import "UIImage+HWMosaic.h"
 #import "MetaPhoto.h"
 #import "UIColor+Metrics.h"
-#import "GPUImage.h"
 #import "UIColor+Distance.h"
 #import "UIImage+Resize.h"
 @implementation UIImage (HWMosaic)
@@ -31,13 +30,12 @@
         
         sampleWidth = [[params objectForKey:@"width"] intValue];
         sampleHeight = [[params objectForKey:@"height"] intValue];
-        
 
         metricsMethod = [params objectForKey:@"metric"];
     }
     //resize image to sampled size
     UIImage *sampleImage = [self resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(sampleWidth, sampleHeight) interpolationQuality: kCGInterpolationHigh];
-    //    UIImageWriteToSavedPhotosAlbum(sampleImage, nil, nil, nil);
+
     sampleWidth = sampleImage.size.width; //real image width
     sampleHeight = sampleImage.size.height; //real image height
     
@@ -49,7 +47,9 @@
     NSLog(@"The estimated output size: %@", NSStringFromCGSize(finalSize));
     
     UIGraphicsBeginImageContext(finalSize);
-    [self drawAtPoint:CGPointMake(0, 0)];
+    
+    [sampleImage drawInRect:CGRectMake(0, 0, finalSize.width, finalSize.height)];
+    
     NSArray *palette = [metaPhotos valueForKey:@"averageColor"];
     
     //process
@@ -98,36 +98,12 @@
         
         //draw matched photo at output context
         CGRect drawRect = CGRectMake(columnCoordinate * metaphotoWidth, rowCoordinate * metaphotoHeight, metaphotoWidth, metaphotoHeight);
-        [matched.photo drawInRect:drawRect];
+        [matched.photo drawInRect:drawRect blendMode:kCGBlendModeNormal alpha:0.8f];
 
     }
     
     free(rawData);
     
-    //end of image
-//    for (int x = 0; x < sampleWidth; x++)
-//    {
-//        for (int y = 0; y < sampleHeight; y++)
-//        {
-//            float percentage = 1.0f*(x*sampleHeight + y)/sampleWidth/sampleHeight;
-//            block (percentage, nil);
-//            GPUImageCropFilter *filter = [[GPUImageCropFilter alloc] initWithCropRegion:CGRectMake(1.0f*x/sampleWidth, 1.0f*y/sampleHeight, 1.0f/sampleWidth, 1.0f/sampleHeight)];
-//            UIImage *regionImage = [filter imageByFilteringImage:self];
-//            MetaPhoto *matched;
-//            UIColor *averageColor = regionImage.mergedColor;
-//            
-//            if ([metricsMethod isEqualToString:@"1"]){
-//                matched = [self matchedPhotoOfColor:averageColor from:metaPhotos];
-//            } else if ([metricsMethod isEqualToString:@"2"])
-//            {
-//                UIColor *matchedColor = [averageColor closestColorInPalette:palette];
-//                NSInteger index = [palette indexOfObject:matchedColor];
-//                matched = metaPhotos[index];
-//            }
-//            CGRect drawRect = CGRectMake(x * metaphotoWidth, y * metaphotoHeight, metaphotoWidth, metaphotoHeight);
-//            [matched.photo drawInRect:drawRect];
-//        }
-//    }
     UIImage *combined = UIGraphicsGetImageFromCurrentImageContext();
     block (1, combined);
     UIGraphicsEndImageContext();
