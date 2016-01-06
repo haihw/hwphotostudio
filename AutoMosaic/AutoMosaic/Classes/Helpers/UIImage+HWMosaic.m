@@ -19,7 +19,7 @@
     float dw = 16; //metaPhoto.photo.size.width;
     float dh = 16; //metaPhoto.photo.size.height;
     
-    int sampleWidth, sampleHeight;
+    NSInteger sampleWidth, sampleHeight;
     sampleWidth = 320;
     sampleHeight = 320;
 
@@ -36,7 +36,7 @@
     }
     //resize image to desired size
     UIImage *sampleImage = [self resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(sampleWidth, sampleHeight) interpolationQuality: kCGInterpolationHigh];
-    UIImageWriteToSavedPhotosAlbum(sampleImage, nil, nil, nil);
+//    UIImageWriteToSavedPhotosAlbum(sampleImage, nil, nil, nil);
     sampleWidth = sampleImage.size.width;
     sampleHeight = sampleImage.size.height;
 
@@ -51,22 +51,23 @@
     NSUInteger bytesPerPixel = 4;
     NSUInteger bytesPerRow = bytesPerPixel * sampleWidth;
     unsigned char * rawData = [sampleImage rawDataWith:bytesPerPixel];
-    for (int h = 0; h < sampleHeight; h++)
+    for (NSInteger h = 0; h < sampleHeight; h++)
     {
-        for (int w = 0; w < sampleWidth; w++)
+        for (NSInteger w = 0; w < sampleWidth; w++)
         {
-            int location = h*sampleWidth + w;
-            float percentage = 1.0*location/sampleWidth/sampleHeight;
+            NSInteger location = h * sampleWidth + w;
+            float percentage = 1.0 * location / sampleWidth / sampleHeight;
             block (percentage, nil);
+            
             MetaPhoto *matched;
             
             //get color value
             NSUInteger byteIndex = (bytesPerRow * h) + w * bytesPerPixel;
 
-            CGFloat red = (rawData[byteIndex]     * 1.0) / 255.0;
-            CGFloat green = (rawData[byteIndex + 1] * 1.0) / 255.0;
-            CGFloat blue = (rawData[byteIndex + 2] * 1.0) / 255.0;
-            CGFloat alpha = (rawData[byteIndex + 3] * 1.0) / 255.0;
+            CGFloat red   = (1.0f * rawData[byteIndex]) / 255.0f;
+            CGFloat green = (1.0f * rawData[byteIndex + 1]) / 255.0f;
+            CGFloat blue  = (1.0f * rawData[byteIndex + 2]) / 255.0f;
+            CGFloat alpha = (1.0f * rawData[byteIndex + 3]) / 255.0f;
             UIColor *averageColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
             
             if ([metricsMethod isEqualToString:@"1"]){
@@ -77,7 +78,7 @@
                 NSInteger index = [palette indexOfObject:matchedColor];
                 matched = metaPhotos[index];
             }
-            CGRect drawRect = CGRectMake(w*dw, h*dh, dw, dh);
+            CGRect drawRect = CGRectMake(w * dw, h * dh, dw, dh);
             [matched.photo drawInRect:drawRect];
         }
     }
@@ -105,7 +106,7 @@
         dy = [[params objectForKey:@"dy"] floatValue];
         metricsMethod = [params objectForKey:@"metric"];
     }
-    int rowNum, colNum;
+    NSInteger rowNum, colNum;
     rowNum = self.size.height / dy;
     colNum = self.size.width / dx;
     CGSize finalSize = CGSizeMake(colNum * dx, rowNum * dy);
@@ -114,13 +115,13 @@
     NSArray *palette = [metaPhotos valueForKey:@"averageColor"];
     
     
-    for (int x = 0; x < colNum; x++)
+    for (NSInteger x = 0; x < colNum; x++)
     {
-        for (int y = 0; y < rowNum; y++)
+        for (NSInteger y = 0; y < rowNum; y++)
         {
             float percentage = 1.0*(x*rowNum + y)/rowNum/colNum;
             block (percentage, nil);
-            GPUImageCropFilter *filter = [[GPUImageCropFilter alloc] initWithCropRegion:CGRectMake(1.0*x/colNum, 1.0*y/rowNum, 1.0/colNum, 1.0/rowNum)];
+            GPUImageCropFilter *filter = [[GPUImageCropFilter alloc] initWithCropRegion:CGRectMake(1.0f * x/colNum, 1.0f *y/rowNum, 1.0f /colNum, 1.0f /rowNum)];
             UIImage *regionImage = [filter imageByFilteringImage:self];
             MetaPhoto *matched;
             UIColor *averageColor = regionImage.mergedColor;
@@ -145,7 +146,8 @@
 - (MetaPhoto *)matchedPhotoOfColor:(UIColor *)color from:(NSArray *)metaPhotoDB
 {
     MetaPhoto *nearestMetaPhoto;
-    double min = 100000000;
+    nearestMetaPhoto = metaPhotoDB.firstObject;
+    double min = [color riemersmaDistanceTo:nearestMetaPhoto.averageColor];
     for (MetaPhoto *meta in metaPhotoDB)
     {
         double distance = [color riemersmaDistanceTo:meta.averageColor];
@@ -184,13 +186,15 @@
     unsigned char *rawData = [self rawDataWith: bytesPerPixel];
     // Now your rawData contains the image data in the RGBA8888 pixel format.
     NSUInteger totalPixel = self.size.width * self.size.height;
-    CGFloat totalRed, totalGreen, totalBlue;
+    CGFloat totalRed = 0;
+    CGFloat totalGreen = 0;
+    CGFloat totalBlue = 0;
 
-    for (int i = 0 ; i < totalPixel ; i++)
+    for (NSInteger i = 0 ; i < totalPixel ; i++)
     {
-        totalRed += (rawData[i * bytesPerPixel]     * 1.0) / 255.0;
-        totalGreen += (rawData[i * bytesPerPixel + 1] * 1.0) / 255.0;
-        totalBlue += (rawData[i * bytesPerPixel + 2] * 1.0) / 255.0;
+        totalRed   += 1.0f * (rawData[i * bytesPerPixel]   )  / 255.0f;
+        totalGreen += 1.0f * (rawData[i * bytesPerPixel + 1]) / 255.0f;
+        totalBlue  += 1.0f * (rawData[i * bytesPerPixel + 2]) / 255.0f;
     }
     
     free(rawData);
@@ -204,10 +208,10 @@
     // scale image to an one pixel image
     
     uint8_t  bitmapData[4];
-    int bitmapByteCount;
-    int bitmapBytesPerRow;
-    int width = 1;
-    int height = 1;
+    NSInteger bitmapByteCount;
+    NSInteger bitmapBytesPerRow;
+    NSInteger width = 1;
+    NSInteger height = 1;
     
     bitmapBytesPerRow = (width * 4);
     bitmapByteCount = (bitmapBytesPerRow * height);

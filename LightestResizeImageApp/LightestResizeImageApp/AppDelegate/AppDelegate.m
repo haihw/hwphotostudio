@@ -17,9 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    NSURL *url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
-    NSLog(@"Open url: %@", url);
-    NSLog(@"Open From: %@", [launchOptions objectForKey:UIApplicationLaunchOptionsSourceApplicationKey]);
+    self.launchOptions = launchOptions;
     return YES;
 }
 

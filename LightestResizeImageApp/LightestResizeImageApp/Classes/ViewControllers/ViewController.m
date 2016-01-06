@@ -13,7 +13,7 @@
 #import <MessageUI/MessageUI.h>
 #import <CoreLocation/CoreLocation.h>
 #import <ImageIO/ImageIO.h>
-
+#import "AppDelegate.h"
 #define kTagImport 101
 #define kTagExport 102
 @interface ViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate>
@@ -30,14 +30,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
+- (void)viewDidAppear:(BOOL)animated
+{
+    AppDelegate *appdelegate = [UIApplication sharedApplication].delegate;
+    if (appdelegate.launchOptions)
+    {
+        NSURL *url = [appdelegate.launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
+        [self getImageFromAssestURL:url];
+        appdelegate.launchOptions = nil;
+    }
 
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)sliderChanged:(id)sender {
-    desiredSize = CGSizeMake(floorf(originalImage.size.width * _slider.value), floorf(originalImage.size.height * _slider.value));
     [self updateInfo];
 }
 
@@ -64,9 +73,6 @@
         UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[newImage, @"My Photo"]
                                                                                  applicationActivities:nil];
         [self presentViewController:activityVC animated:YES completion:nil];
-//        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Export Image" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Save To Library", @"iMessage", @"Mail", nil];
-//        actionSheet.tag = kTagExport;
-//        [actionSheet showInView:self.view];
     }
 }
 - (void) image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
@@ -98,7 +104,6 @@
             case 2:
             {
                 originalImage = [UIPasteboard generalPasteboard].image;
-                desiredSize = originalImage.size;
                 [self updateInfo];
                 
             }
@@ -160,12 +165,35 @@
     [metadata setObject:[self gpsDictionaryForLocation:manager.location] forKey:(NSString*)kCGImagePropertyGPSDictionary];
     [manager stopUpdatingLocation];
 }
+- (void)getImageFromAssestURL:(NSURL *)assetURL
+{
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"message" message:assetURL.absoluteString delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+        // Get the image metadata (EXIF & TIFF)
+        originalImage = [UIImage imageWithCGImage:asset.defaultRepresentation.fullResolutionImage];
+        [self updateInfo];
+        _imageView.image = originalImage;
+        metadata = [NSMutableDictionary dictionary];
+        // try to retrieve gps metadata coordinates
+        CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
+        if ( location ) {
+            [metadata setObject:[self gpsDictionaryForLocation:location] forKey:(NSString*)kCGImagePropertyGPSDictionary];
+        }
+
+    } failureBlock:^(NSError *error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"message" message:@"Failed to load" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+        
+    }];
+
+}
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     _imageView.image = originalImage;
-    desiredSize = originalImage.size;
     [self updateInfo];
 
     switch (picker.sourceType) {
@@ -212,6 +240,7 @@
 }
 - (void)updateInfo
 {
+    desiredSize = CGSizeMake(floorf(originalImage.size.width * _slider.value), floorf(originalImage.size.height * _slider.value));
     _lbInfo.text = [NSString stringWithFormat:@"Size: %@", NSStringFromCGSize(desiredSize)];
     _lbNoImageImported.hidden = YES;
 }

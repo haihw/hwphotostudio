@@ -1,17 +1,11 @@
 PODS:
-  - Google-AdMob-Ads-SDK (6.12.2)
-  - GoogleAnalytics-iOS-SDK (3.10):
-    - GoogleAnalytics-iOS-SDK/Core (= 3.10)
-  - GoogleAnalytics-iOS-SDK/Core (3.10)
-  - GPUImage (0.1.6)
+  - GPUImage (0.1.7)
   - iRate (1.11.3)
   - JTSImageViewController (1.4)
   - MBProgressHUD (0.9)
   - MTColorDistance (0.0.3)
 
 DEPENDENCIES:
-  - Google-AdMob-Ads-SDK
-  - GoogleAnalytics-iOS-SDK
   - GPUImage
   - iRate
   - JTSImageViewController
@@ -19,12 +13,10 @@ DEPENDENCIES:
   - MTColorDistance
 
 SPEC CHECKSUMS:
-  Google-AdMob-Ads-SDK: 9776de20c7904bd29dc37f81e24707cdee9c706c
-  GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
-  GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   iRate: 5e1978bac8b3f3f0296dbeccc0dd7b50e6e50657
-  JTSImageViewController: 9fe6402194b7679f0e28d0c1002d6164301fc34a
+  JTSImageViewController: 6a367b144e257db02cdfacdba78d684377d3777b
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MTColorDistance: 32914deeb3061f00b9be7a1a3afb4581a85b4868
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0

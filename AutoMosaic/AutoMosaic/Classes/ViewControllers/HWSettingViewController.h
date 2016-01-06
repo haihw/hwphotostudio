@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface HWSettingViewController : UIViewController
-
+@property (strong, nonatomic) IBOutlet UISlider *sliderSampleSize;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedMethod;
+@property (strong, nonatomic) IBOutlet UILabel *lbSampleSize;
++ (HWSettingViewController *)sharedSetting;
 @end

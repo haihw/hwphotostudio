@@ -9,6 +9,7 @@
 #import "HWPhotoMosaicViewController.h"
 #import "UIImage+HWMosaic.h"
 #import "HWProgressHUD.h"
+#import "HWSettingViewController.h"
 @interface HWPhotoMosaicViewController ()
 
 @end
@@ -26,6 +27,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     _imageView.image = _inputImage;
 }
 /*
@@ -43,12 +45,20 @@
     hud.mode = MBProgressHUDModeDeterminate;
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Do something...
+        NSInteger sampleSize = 256;
+        if ([HWSettingViewController sharedSetting].sliderSampleSize){
+            sampleSize = [HWSettingViewController sharedSetting].sliderSampleSize.value;
+        }
+        NSString *method = @"1";
+//        if ([HWSettingViewController sharedSetting].segmentedMethod.selectedSegmentIndex){
+//            method = @"2";
+//        }
         NSDictionary *params = @{
-                                 @"metric": @"1", //riemersmaDistanceTo
-                                 @"dx":@32,
-                                 @"dy":@32,
-                                 @"width":@100,
-                                 @"height":@100,
+                                 @"metric":method, //riemersmaDistanceTo
+                                 @"dx"    :@32,
+                                 @"dy"    :@32,
+                                 @"width" :[NSNumber numberWithInteger:sampleSize],
+                                 @"height":[NSNumber numberWithInteger:sampleSize],
                                  };
         [_inputImage createMosaic2WithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
             if (mosaicImage){

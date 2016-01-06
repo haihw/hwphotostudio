@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C55B65E41A456FDC00585865 /* AutoMosaicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65E31A456FDC00585865 /* AutoMosaicTests.m */; };
 		C55B66061A4570BD00585865 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65F01A4570BD00585865 /* AppDelegate.m */; };
 		C55B66071A4570BD00585865 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65F41A4570BD00585865 /* main.m */; };
 		C55B66081A4570BD00585865 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65F71A4570BD00585865 /* ViewController.m */; };
@@ -23,27 +22,15 @@
 		C55B662C1A45F87A00585865 /* UIColor+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662B1A45F87A00585865 /* UIColor+Metrics.m */; };
 		C55B662F1A46020600585865 /* UIImage+HWMosaic.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662E1A46020600585865 /* UIImage+HWMosaic.m */; };
 		C55B66321A46B9DB00585865 /* HWSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66311A46B9DB00585865 /* HWSettingViewController.m */; };
-		C5F5F4171A4F1F6F00DFC256 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5F5F4161A4F1F6F00DFC256 /* iTunesArtwork@2x.png */; };
 		C5F5F47A1A4FA72300DFC256 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4751A4FA72300DFC256 /* UIImage+Alpha.m */; };
 		C5F5F47B1A4FA72300DFC256 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4771A4FA72300DFC256 /* UIImage+Resize.m */; };
 		C5F5F47C1A4FA72300DFC256 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4791A4FA72300DFC256 /* UIImage+RoundedCorner.m */; };
 		DC33F60FCF2B7E9ED8B974A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F961299844C7B109C308CEE7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C55B65DE1A456FDC00585865 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C55B65B91A456FDC00585865 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C55B65C01A456FDC00585865;
-			remoteInfo = AutoMosaic;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		8B81C6540DA5F6D494A35428 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		C55B65C11A456FDC00585865 /* AutoMosaic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoMosaic.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C55B65DD1A456FDC00585865 /* AutoMosaicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoMosaicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C55B65C11A456FDC00585865 /* Mosaicify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mosaicify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55B65E21A456FDC00585865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55B65E31A456FDC00585865 /* AutoMosaicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoMosaicTests.m; sourceTree = "<group>"; };
 		C55B65EF1A4570BD00585865 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,7 +59,6 @@
 		C55B662E1A46020600585865 /* UIImage+HWMosaic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HWMosaic.m"; sourceTree = "<group>"; };
 		C55B66301A46B9DB00585865 /* HWSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWSettingViewController.h; sourceTree = "<group>"; };
 		C55B66311A46B9DB00585865 /* HWSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWSettingViewController.m; sourceTree = "<group>"; };
-		C5F5F4161A4F1F6F00DFC256 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "../../../../../../Documents/App Icon [Squared]/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		C5F5F4741A4FA72300DFC256 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		C5F5F4751A4FA72300DFC256 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		C5F5F4761A4FA72300DFC256 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -93,13 +79,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C55B65DA1A456FDC00585865 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -115,19 +94,18 @@
 		C55B65B81A456FDC00585865 = {
 			isa = PBXGroup;
 			children = (
-				C55B66151A45C4F800585865 /* Frameworks */,
 				C55B65C31A456FDC00585865 /* AutoMosaic */,
 				C55B65E01A456FDC00585865 /* AutoMosaicTests */,
-				C55B65C21A456FDC00585865 /* Products */,
+				C55B66151A45C4F800585865 /* Frameworks */,
 				AF967A65A2C1D68C97BA1F14 /* Pods */,
+				C55B65C21A456FDC00585865 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
 		C55B65C21A456FDC00585865 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C55B65C11A456FDC00585865 /* AutoMosaic.app */,
-				C55B65DD1A456FDC00585865 /* AutoMosaicTests.xctest */,
+				C55B65C11A456FDC00585865 /* Mosaicify.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,10 +139,10 @@
 		C55B65ED1A4570BD00585865 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C55B66261A45F7C100585865 /* Models */,
 				C55B65EE1A4570BD00585865 /* AppDelegate */,
 				C55B65F11A4570BD00585865 /* GlobalLibs */,
 				C55B65F21A4570BD00585865 /* Helpers */,
+				C55B66261A45F7C100585865 /* Models */,
 				C55B65F31A4570BD00585865 /* Others */,
 				C55B65F51A4570BD00585865 /* ViewControllers */,
 				C55B65F81A4570BD00585865 /* Views */,
@@ -265,7 +243,6 @@
 		C55B66031A4570BD00585865 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				C5F5F4161A4F1F6F00DFC256 /* iTunesArtwork@2x.png */,
 				C55B66041A4570BD00585865 /* Images.xcassets */,
 			);
 			path = Images;
@@ -321,6 +298,7 @@
 				C55B65BE1A456FDC00585865 /* Frameworks */,
 				C55B65BF1A456FDC00585865 /* Resources */,
 				7384488F630BE9A3E705AD62 /* Copy Pods Resources */,
+				FFE42F655D3DAC3F7256106E /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,26 +306,8 @@
 			);
 			name = Mosaicify;
 			productName = AutoMosaic;
-			productReference = C55B65C11A456FDC00585865 /* AutoMosaic.app */;
+			productReference = C55B65C11A456FDC00585865 /* Mosaicify.app */;
 			productType = "com.apple.product-type.application";
-		};
-		C55B65DC1A456FDC00585865 /* AutoMosaicTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C55B65EA1A456FDC00585865 /* Build configuration list for PBXNativeTarget "AutoMosaicTests" */;
-			buildPhases = (
-				C55B65D91A456FDC00585865 /* Sources */,
-				C55B65DA1A456FDC00585865 /* Frameworks */,
-				C55B65DB1A456FDC00585865 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C55B65DF1A456FDC00585865 /* PBXTargetDependency */,
-			);
-			name = AutoMosaicTests;
-			productName = AutoMosaicTests;
-			productReference = C55B65DD1A456FDC00585865 /* AutoMosaicTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -356,16 +316,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HW;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "HW Inc";
 				TargetAttributes = {
 					C55B65C01A456FDC00585865 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = 47NZJ66X5R;
-					};
-					C55B65DC1A456FDC00585865 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = C55B65C01A456FDC00585865;
 					};
 				};
 			};
@@ -383,7 +339,6 @@
 			projectRoot = "";
 			targets = (
 				C55B65C01A456FDC00585865 /* Mosaicify */,
-				C55B65DC1A456FDC00585865 /* AutoMosaicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -396,14 +351,6 @@
 				C55B661A1A45D38C00585865 /* LaunchScreen.xib in Resources */,
 				C55B661B1A45D38C00585865 /* Main.storyboard in Resources */,
 				C55B660D1A4570BD00585865 /* Images.xcassets in Resources */,
-				C5F5F4171A4F1F6F00DFC256 /* iTunesArtwork@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C55B65DB1A456FDC00585865 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +387,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FFE42F655D3DAC3F7256106E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -464,23 +426,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C55B65D91A456FDC00585865 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C55B65E41A456FDC00585865 /* AutoMosaicTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C55B65DF1A456FDC00585865 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C55B65C01A456FDC00585865 /* Mosaicify */;
-			targetProxy = C55B65DE1A456FDC00585865 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C55B65FD1A4570BD00585865 /* LaunchScreen.xib */ = {
@@ -522,6 +468,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -587,10 +534,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.haihw.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -603,46 +552,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.haihw.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		C55B65EB1A456FDC00585865 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = AutoMosaicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoMosaic.app/AutoMosaic";
-			};
-			name = Debug;
-		};
-		C55B65EC1A456FDC00585865 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = AutoMosaicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoMosaic.app/AutoMosaic";
 			};
 			name = Release;
 		};
@@ -663,15 +580,6 @@
 			buildConfigurations = (
 				C55B65E81A456FDC00585865 /* Debug */,
 				C55B65E91A456FDC00585865 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C55B65EA1A456FDC00585865 /* Build configuration list for PBXNativeTarget "AutoMosaicTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C55B65EB1A456FDC00585865 /* Debug */,
-				C55B65EC1A456FDC00585865 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
