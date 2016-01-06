@@ -25,7 +25,7 @@
     // Do any additional setup after loading the view.
     _imageView.image = _inputImage;
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterPercentStyle];
+    formatter.roundingMode = NSNumberFormatterRoundDown;
     [_sliderMosaicSize setNumberFormatter:formatter];
     [_sliderSampleSize setNumberFormatter:formatter];
     [self updateDescription];
