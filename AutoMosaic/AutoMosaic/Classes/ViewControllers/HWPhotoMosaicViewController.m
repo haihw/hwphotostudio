@@ -45,7 +45,7 @@
     hud.mode = MBProgressHUDModeDeterminate;
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Do something...
-        NSInteger sampleSize = 256;
+        NSInteger sampleSize = 128;
         if ([HWSettingViewController sharedSetting].sliderSampleSize){
             sampleSize = [HWSettingViewController sharedSetting].sliderSampleSize.value;
         }
@@ -55,12 +55,12 @@
 //        }
         NSDictionary *params = @{
                                  @"metric":method, //riemersmaDistanceTo
-                                 @"dx"    :@32,
-                                 @"dy"    :@32,
+                                 @"dx"    :@16,
+                                 @"dy"    :@16,
                                  @"width" :[NSNumber numberWithInteger:sampleSize],
                                  @"height":[NSNumber numberWithInteger:sampleSize],
                                  };
-        [_inputImage createMosaic2WithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
+        [_inputImage createMosaicWithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
             if (mosaicImage){
                 dispatch_async(dispatch_get_main_queue(), ^{
                     _imageView.image = mosaicImage;
