@@ -10,6 +10,4 @@
 
 @interface HwPhotoHelper : NSObject
 + (void)getAllThumbnailPhotosFromLibraryWithResponse:(void(^)(NSMutableArray *thumbnails)) block;
-+ (UIColor *)averageColorOfImage:(UIImage *)image;
-
 @end

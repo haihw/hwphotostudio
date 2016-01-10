@@ -5,7 +5,7 @@
 //  Created by Hai Hw on 21/12/14.
 //  Copyright (c) 2014 HW Inc. All rights reserved.
 //
-
+#import <iAd/iAd.h>
 #import <UIKit/UIKit.h>
 @class ASValueTrackingSlider;
 @interface HWPhotoMosaicViewController : UIViewController
@@ -19,5 +19,6 @@
 - (IBAction)tapGestureHandle:(UITapGestureRecognizer *)sender;
 - (IBAction)sliderSampleSizeChange:(id)sender;
 - (IBAction)sliderMosaicSizeChange:(id)sender;
+@property (strong, nonatomic) IBOutlet ADBannerView *iAdTopBanner;
 
 @end

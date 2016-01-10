@@ -12,9 +12,11 @@
 #import "HWSettingViewController.h"
 #import "JTSImageViewController.h"
 #import "ASValueTrackingSlider.h"
-@interface HWPhotoMosaicViewController ()
+@interface HWPhotoMosaicViewController () <ADBannerViewDelegate, ADInterstitialAdDelegate>
 {
     UIImage *outputImage;
+    UIView *adContainerView;
+    ADInterstitialAd *adInterstitial;
 }
 @end
 
@@ -29,6 +31,10 @@
     [_sliderMosaicSize setNumberFormatter:formatter];
     [_sliderSampleSize setNumberFormatter:formatter];
     [self updateDescription];
+    
+    //AD
+    adInterstitial = [[ADInterstitialAd alloc] init];
+    adInterstitial.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,14 +99,56 @@
     [self updateDescription];
 }
 - (IBAction)btnComparePressed:(id)sender {
-    _imageView.image = _inputImage;
+    if (_inputImage){
+        _imageView.image = _inputImage;
+    }
+    [self showAd];
 }
 - (IBAction)btnCompareReleased:(id)sender {
-    _imageView.image = outputImage;
+    if (outputImage){
+        _imageView.image = outputImage;
+    }
 }
 - (void)updateDescription{
     NSInteger size =  (NSInteger)_sliderMosaicSize.value * (NSInteger)_sliderSampleSize.value;
     _lbDescription.text = [NSString stringWithFormat:@"Estimated output size: {%ld, %ld}", size, size];
    
+}
+- (void)showAd{
+    if (adInterstitial.loaded)
+    {
+        adContainerView = [[UIView alloc] initWithFrame:self.view.bounds];
+        [self.view addSubview:adContainerView];
+        [adInterstitial presentInView: adContainerView];
+    }
+}
+#pragma mark - AdBannerDelegate
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    NSLog(@"Ad failed: %@", error.localizedDescription);
+}
+-(void)bannerViewWillLoadAd:(ADBannerView *)banner{
+    NSLog(@"Ad banner will be loaded");
+}
+-(void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    NSLog(@"Ad banner did load");
+}
+
+#pragma mark - ad interstitialAd delegate
+- (void)interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error{
+    NSLog(@"Ad failed: %@", error.localizedDescription);
+}
+- (void)interstitialAdWillLoad:(ADInterstitialAd *)interstitialAd{
+    NSLog(@"Ad interstitial will load");
+}
+- (void)interstitialAdDidLoad:(ADInterstitialAd *)interstitialAd{
+    NSLog(@"Ad interstitial did load");
+}
+- (void)interstitialAdDidUnload:(ADInterstitialAd *)interstitialAd{
+    NSLog(@"Ad interstitial did unload");
+//    [self prepareForInterfaceBuilder];
+}
+- (void)interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd{
+    NSLog(@"Ad interstitial action did finish");
+    [adContainerView removeFromSuperview];
 }
 @end

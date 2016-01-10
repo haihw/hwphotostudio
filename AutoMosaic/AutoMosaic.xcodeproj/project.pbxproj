@@ -22,6 +22,8 @@
 		C55B662C1A45F87A00585865 /* UIColor+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662B1A45F87A00585865 /* UIColor+Metrics.m */; };
 		C55B662F1A46020600585865 /* UIImage+HWMosaic.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662E1A46020600585865 /* UIImage+HWMosaic.m */; };
 		C55B66321A46B9DB00585865 /* HWSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66311A46B9DB00585865 /* HWSettingViewController.m */; };
+		C5E160571C4175D500CAA19E /* mosaic_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E160561C4175D500CAA19E /* mosaic_sample.png */; };
+		C5E160591C417B0A00CAA19E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E160581C417B0A00CAA19E /* iAd.framework */; };
 		C5F5F47A1A4FA72300DFC256 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4751A4FA72300DFC256 /* UIImage+Alpha.m */; };
 		C5F5F47B1A4FA72300DFC256 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4771A4FA72300DFC256 /* UIImage+Resize.m */; };
 		C5F5F47C1A4FA72300DFC256 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4791A4FA72300DFC256 /* UIImage+RoundedCorner.m */; };
@@ -59,6 +61,8 @@
 		C55B662E1A46020600585865 /* UIImage+HWMosaic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HWMosaic.m"; sourceTree = "<group>"; };
 		C55B66301A46B9DB00585865 /* HWSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWSettingViewController.h; sourceTree = "<group>"; };
 		C55B66311A46B9DB00585865 /* HWSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWSettingViewController.m; sourceTree = "<group>"; };
+		C5E160561C4175D500CAA19E /* mosaic_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mosaic_sample.png; sourceTree = "<group>"; };
+		C5E160581C417B0A00CAA19E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C5F5F4741A4FA72300DFC256 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
 		C5F5F4751A4FA72300DFC256 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
 		C5F5F4761A4FA72300DFC256 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5E160591C417B0A00CAA19E /* iAd.framework in Frameworks */,
 				C55B66141A45C4E000585865 /* AssetsLibrary.framework in Frameworks */,
 				DC33F60FCF2B7E9ED8B974A2 /* libPods.a in Frameworks */,
 			);
@@ -243,6 +248,7 @@
 		C55B66031A4570BD00585865 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C5E160561C4175D500CAA19E /* mosaic_sample.png */,
 				C55B66041A4570BD00585865 /* Images.xcassets */,
 			);
 			path = Images;
@@ -258,6 +264,7 @@
 		C55B66151A45C4F800585865 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C5E160581C417B0A00CAA19E /* iAd.framework */,
 				C55B66131A45C4DF00585865 /* AssetsLibrary.framework */,
 				F961299844C7B109C308CEE7 /* libPods.a */,
 			);
@@ -349,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C55B661A1A45D38C00585865 /* LaunchScreen.xib in Resources */,
+				C5E160571C4175D500CAA19E /* mosaic_sample.png in Resources */,
 				C55B661B1A45D38C00585865 /* Main.storyboard in Resources */,
 				C55B660D1A4570BD00585865 /* Images.xcassets in Resources */,
 			);
