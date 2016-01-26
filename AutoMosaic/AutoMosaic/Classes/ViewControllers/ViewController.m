@@ -5,6 +5,7 @@
 //  Created by Hai Hw on 20/12/14.
 //  Copyright (c) 2014 HW Inc. All rights reserved.
 //
+@import GoogleMobileAds;
 
 #import "ViewController.h"
 #import "HwPhotoHelper.h"
@@ -12,10 +13,11 @@
 #import "HWPhotoMosaicViewController.h"
 #import "MetaPhoto.h"
 #import "UIImage+HWMosaic.h"
-@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, GADBannerViewDelegate>
 {
     UIImage *inputImage;
     NSMutableArray *libraryMetaPhotos;
+    IBOutlet GADBannerView *gaBannerView;
 }
 @end
 
@@ -25,6 +27,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self.navigationController setNavigationBarHidden:YES];
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    gaBannerView.adUnitID = @"ca-app-pub-1931446035208028/1100181191";
+    gaBannerView.rootViewController = self;
+    [gaBannerView loadRequest:[GADRequest request]];
     [self scanLibrary];
 }
 - (void)viewDidAppear:(BOOL)animated
@@ -106,5 +112,12 @@
 - (IBAction)startOver:(UIStoryboardSegue *)unwindSegue
 {
 }
-
+#pragma mark addelegate
+-(void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
+{
+    NSLog(@"%@", error.localizedDescription);
+}
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
+    NSLog(@"Ad received");
+}
 @end

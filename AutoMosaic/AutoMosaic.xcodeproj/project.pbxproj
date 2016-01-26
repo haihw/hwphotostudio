@@ -32,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		8B81C6540DA5F6D494A35428 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C523C77C1C57DCC700AC5F90 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C55B65C11A456FDC00585865 /* Mosaicify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mosaicify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55B65E21A456FDC00585865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55B65E31A456FDC00585865 /* AutoMosaicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoMosaicTests.m; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		C55B65B81A456FDC00585865 = {
 			isa = PBXGroup;
 			children = (
+				C523C77C1C57DCC700AC5F90 /* podfile */,
 				C55B65C31A456FDC00585865 /* AutoMosaic */,
 				C55B65E01A456FDC00585865 /* AutoMosaicTests */,
 				C55B66151A45C4F800585865 /* Frameworks */,
@@ -547,9 +549,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.haihw.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.mosaicify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -558,16 +561,17 @@
 			baseConfigurationReference = 8B81C6540DA5F6D494A35428 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hai Nguyen Huu Hiep (47NZJ66X5R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hai Nguyen Huu Hiep (47NZJ66X5R)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.haihw.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.mosaicify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

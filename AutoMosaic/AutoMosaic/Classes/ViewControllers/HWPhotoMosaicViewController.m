@@ -75,6 +75,8 @@
                     _imageView.image = mosaicImage;
                     outputImage = mosaicImage;
                     UIImageWriteToSavedPhotosAlbum(mosaicImage, nil, nil, nil);
+                    [self showAd];
+
                     [HWProgressHUD hideHUDForView:self.view animated:YES];
                 });
             }
@@ -102,7 +104,6 @@
     if (_inputImage){
         _imageView.image = _inputImage;
     }
-    [self showAd];
 }
 - (IBAction)btnCompareReleased:(id)sender {
     if (outputImage){
