@@ -15,5 +15,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #endif
-
+#define kGADBannerUnitID @"ca-app-pub-1931446035208028/1100181191"
+#define kGADInterstitialUnitID @"ca-app-pub-1931446035208028/8398057992"
 #endif

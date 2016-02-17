@@ -28,7 +28,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self.navigationController setNavigationBarHidden:YES];
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
-    gaBannerView.adUnitID = @"ca-app-pub-1931446035208028/1100181191";
+    gaBannerView.adUnitID = kGADBannerUnitID;
     gaBannerView.rootViewController = self;
     [gaBannerView loadRequest:[GADRequest request]];
     [self scanLibrary];

@@ -12,11 +12,13 @@
 #import "HWSettingViewController.h"
 #import "JTSImageViewController.h"
 #import "ASValueTrackingSlider.h"
-@interface HWPhotoMosaicViewController () <ADBannerViewDelegate, ADInterstitialAdDelegate>
+#import <GoogleMobileAds/GoogleMobileAds.h>
+@interface HWPhotoMosaicViewController () <ADBannerViewDelegate, ADInterstitialAdDelegate, GADInterstitialDelegate, GADBannerViewDelegate>
 {
     UIImage *outputImage;
     UIView *adContainerView;
     ADInterstitialAd *adInterstitial;
+    GADInterstitial *interstitial;
 }
 @end
 
@@ -35,6 +37,13 @@
     //AD
     adInterstitial = [[ADInterstitialAd alloc] init];
     adInterstitial.delegate = self;
+    
+    _GAdBanner.adUnitID = kGADBannerUnitID;
+    _GAdBanner.rootViewController = self;
+    [_GAdBanner loadRequest:[GADRequest request]];
+
+//    _iAdTopBanner.hidden = YES;
+    _GAdBanner.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,8 +65,11 @@
 */
 
 - (IBAction)btnProcessTapped:(id)sender {
-    HWProgressHUD *hud = [HWProgressHUD showHUDAddedTo:self.view animated:YES withTitle:@"Processing"];
+    [self createAndLoadInterstitial];
+    HWProgressHUD *hud = [HWProgressHUD showHUDAddedTo:_imageContainerView animated:YES withTitle:@"Processing"];
     hud.mode = MBProgressHUDModeDeterminate;
+    _btnCompare.enabled = NO;
+    _btnProcess.enabled = NO;
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Do something...
         NSInteger sampleSize = (NSInteger) _sliderSampleSize.value;
@@ -72,12 +84,15 @@
         [_inputImage createMosaicWithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
             if (mosaicImage){
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    _btnCompare.enabled = YES;
+                    _btnProcess.enabled = YES;
+
                     _imageView.image = mosaicImage;
                     outputImage = mosaicImage;
-                    UIImageWriteToSavedPhotosAlbum(mosaicImage, nil, nil, nil);
+//                    UIImageWriteToSavedPhotosAlbum(mosaicImage, nil, nil, nil);
                     [self showAd];
 
-                    [HWProgressHUD hideHUDForView:self.view animated:YES];
+                    [HWProgressHUD hideHUDForView:_imageContainerView animated:YES];
                 });
             }
             hud.detailsLabelText = [NSString stringWithFormat:@"Processing %0.1f%%", percentage*100];
@@ -100,6 +115,16 @@
 - (IBAction)sliderMosaicSizeChange:(id)sender {
     [self updateDescription];
 }
+
+- (IBAction)btnShareTapped:(id)sender {
+    UIImage *image = _imageView.image;
+    NSString *message = @"My mosaic photo by #mosaicify";
+    NSArray *postItems = @[message, image];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]
+                                            initWithActivityItems:postItems
+                                            applicationActivities:nil];
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
 - (IBAction)btnComparePressed:(id)sender {
     if (_inputImage){
         _imageView.image = _inputImage;
@@ -116,12 +141,48 @@
    
 }
 - (void)showAd{
-    if (adInterstitial.loaded)
+    if (interstitial.isReady) {
+        [interstitial presentFromRootViewController:self];
+    } else if (adInterstitial.loaded)
     {
         adContainerView = [[UIView alloc] initWithFrame:self.view.bounds];
         [self.view addSubview:adContainerView];
         [adInterstitial presentInView: adContainerView];
     }
+}
+- (void)createAndLoadInterstitial {
+    interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGADInterstitialUnitID];
+    interstitial.delegate = self;
+    
+    GADRequest *request = [GADRequest request];
+    // Request test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made. GADInterstitial automatically returns test ads when running on a
+    // simulator.
+    [interstitial loadRequest:request];
+}
+
+#pragma mark GADInterstitialDelegate implementation
+
+- (void)interstitial:(GADInterstitial *)interstitial
+didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"interstitialDidFailToReceiveAdWithError: %@", [error localizedDescription]);
+}
+
+- (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {
+    NSLog(@"interstitialDidDismissScreen");
+}
+
+#pragma mark GADBannerViewDelegate implementation
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
+    NSLog(@"GAd banner did receive ad");
+    _GAdBanner.hidden = NO;
+    _iAdTopBanner.hidden = YES;
+}
+- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
+{
+    NSLog(@"GAd failed: %@", error.localizedDescription);
+    _GAdBanner.hidden = YES;
+    _iAdTopBanner.hidden = NO;
 }
 #pragma mark - AdBannerDelegate
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
@@ -132,6 +193,9 @@
 }
 -(void)bannerViewDidLoadAd:(ADBannerView *)banner{
     NSLog(@"Ad banner did load");
+    if (_GAdBanner.hidden){
+        _iAdTopBanner.hidden = NO;
+    }
 }
 
 #pragma mark - ad interstitialAd delegate
