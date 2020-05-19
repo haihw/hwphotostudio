@@ -10,7 +10,36 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 @import Photos;
 @implementation HwPhotoHelper
+/**
+ required to call in background
+ */
++ (NSArray *)getAllThumbnailPhotosReturnWithOnePixels:(NSMutableArray *)onePixels{
+    NSAssert(onePixels.count == 0 && onePixels != nil, @"Wrong onepixel input");
+    PHFetchResult <PHCollection*> * result = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+    [result enumerateObjectsUsingBlock:^(PHCollection* collection, NSUInteger idx, BOOL *stop) {
+        NSLog(@"Album name: %@", collection.localizedTitle);
+    }];
+    PHFetchOptions *userAlbumsOptions = [PHFetchOptions new];
+        userAlbumsOptions.predicate = [NSPredicate predicateWithFormat:@"estimatedAssetCount > 0"];
 
+    PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum
+                                                                         subtype:PHAssetCollectionSubtypeAny
+                                                                         options:userAlbumsOptions];
+    NSMutableArray *thumbnails = [NSMutableArray new];
+    [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
+        NSLog(@"Album name: %@", collection.localizedTitle);
+        NSMutableArray *onePixelSubset = [NSMutableArray new];
+        NSArray *thumbnailsSubset = [self getAllThumbnailPhotosFromAlbum:collection onePixels:onePixelSubset];
+        if (thumbnailsSubset.count > 0){
+            [thumbnails addObjectsFromArray:thumbnailsSubset];
+//            [onePixels addObjectsFromArray:thumbnailsSubset];
+        }
+    }];
+    return thumbnails;
+}
+/**
+ required to call in background
+ */
 + (NSArray *)getAllThumbnailPhotosFromAlbum:(PHAssetCollection *) collection onePixels:(NSMutableArray *)onePixels{
     PHFetchOptions *onlyImagesOptions = [PHFetchOptions new];
     onlyImagesOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %i", PHAssetMediaTypeImage];
@@ -25,7 +54,6 @@
     NSMutableArray *assets = [NSMutableArray new];
     
     [result enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
-        NSLog(@"asset %@", asset);
         [assets addObject:asset];
     }];
     for (PHAsset *asset in assets){
@@ -34,16 +62,19 @@
                                                   contentMode:PHImageContentModeAspectFill
                                                       options:options
                                                 resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-            [thumbnails addObject:result];
-            
+            if (result == nil){
+                NSLog(@"Error: asset: %@ - %@", info, asset);
+            } else {
+                [thumbnails addObject:result];
+            }
         }];
-        [[PHImageManager defaultManager] requestImageForAsset:asset
-                                                   targetSize:CGSizeMake(1, 1)
-                                                  contentMode:PHImageContentModeAspectFill
-                                                      options:options
-                                                resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-            [onePixels addObject:result];
-        }];
+//        [[PHImageManager defaultManager] requestImageForAsset:asset
+//                                                   targetSize:CGSizeMake(1, 1)
+//                                                  contentMode:PHImageContentModeAspectFill
+//                                                      options:options
+//                                                resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+//            [onePixels addObject:result];
+//        }];
     }
     return thumbnails;
 }
@@ -68,13 +99,43 @@
     }];
     return albums;
 }
+#pragma mark - faster but old API
++ (void)getAllPhotoAlbumsWithResponse:(void(^)(NSArray <ALAssetsGroup*> *result)) block{
+    NSMutableArray *result = [NSMutableArray new];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.ALAssetsGroupEvent
+    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos | ALAssetsGroupEvent  usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        if (!group){
+            block (result);
+        }else{
+            NSLog(@"Group: %@", [group valueForProperty:ALAssetsGroupPropertyName]);
+            [result addObject:group];
+        }
+    } failureBlock:^(NSError *error) {
+        block(nil);
+    }];
+}
++ (void)getThumbnailsFromGroup:(ALAssetsGroup *)group
+                      response: (void(^)(NSMutableArray *thumbnails)) block{
+    NSMutableArray *thumbnails = [NSMutableArray array];
+    [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+    [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
+        // The end of the enumeration is signaled by asset == nil.
+        if (alAsset) {
+            UIImage *thumbnail =  [UIImage imageWithCGImage:[alAsset thumbnail]];
+            [thumbnails addObject:thumbnail];
+        } else {
+            block(thumbnails);
+        }
+    }];
+}
 + (void)getAllThumbnailPhotosFromLibraryWithResponse:(void(^)(NSMutableArray *thumbnails)) block
 {
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     NSMutableArray *thumbnails = [NSMutableArray array];
     
     // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.ALAssetsGroupEvent
-    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos  usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         // When the enumeration is done, 'enumerationBlock' will be called with group set to nil.
         if (!group)
         {
