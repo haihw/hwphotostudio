@@ -14,8 +14,9 @@
 @implementation UIImage (HWMosaic)
 - (void)createMosaicWithMetaPhotos:(NSArray *)metaPhotos params:(NSDictionary *)params progress: (void(^)(float percentage, UIImage *mosaicImage)) block
 {
+#if DEBUG
     NSDate *startTime = [NSDate date];
-
+#endif
     MetaPhoto *anyMeta = metaPhotos.firstObject;
     float metaphotoWidth = anyMeta.photo.size.width;
     float metaphotoHeight = anyMeta.photo.size.height;
@@ -72,11 +73,15 @@
     
     // Now your rawData contains the image data in the RGBA8888 pixel format.
     NSUInteger totalPixel = width * height;
+    
+    NSUInteger interval = MAX(totalPixel / 1000, 10);
     float red, green, blue;
     for (int i = 0 ; i < totalPixel ; i++)
     {
-        float percentage = 1.0f * i / totalPixel;
-        block (percentage, nil);
+        if (i % interval == 0){
+            float percentage = 1.0f * i / totalPixel;
+            block (percentage, nil);
+        }
         //get color of sample image
         red = (rawData[i * bytesPerPixel]     * 1.0) / 255.0;
         green = (rawData[i * bytesPerPixel + 1] * 1.0) / 255.0;
@@ -107,8 +112,9 @@
     UIImage *combined = UIGraphicsGetImageFromCurrentImageContext();
     block (1, combined);
     UIGraphicsEndImageContext();
+#if DEBUG
     NSLog(@"Process Time: %f s", -[startTime timeIntervalSinceNow]);
-
+#endif
 }
 - (MetaPhoto *)matchedPhotoOfColor:(UIColor *)color from:(NSArray *)metaPhotoDB
 {

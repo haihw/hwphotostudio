@@ -6,18 +6,21 @@
 //  Copyright (c) 2014 HW Inc. All rights reserved.
 //
 @import GoogleMobileAds;
-
+@import Photos;
+@import PhotosUI;
 #import "ViewController.h"
 #import "HwPhotoHelper.h"
 #import "HWProgressHUD.h"
 #import "HWPhotoMosaicViewController.h"
 #import "MetaPhoto.h"
 #import "UIImage+HWMosaic.h"
-@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, GADBannerViewDelegate>
+@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, GADBannerViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
     UIImage *inputImage;
     NSMutableArray *libraryMetaPhotos;
     IBOutlet GADBannerView *gaBannerView;
+    NSArray <PHAssetCollection*> *imageCollections;
+    NSInteger selectedAlbumIndex;
 }
 @end
 
@@ -31,10 +34,13 @@
     gaBannerView.adUnitID = kGADBannerUnitID;
     gaBannerView.rootViewController = self;
     [gaBannerView loadRequest:[GADRequest request]];
-    [self scanLibrary];
+//    [self scanLibrary];
+    imageCollections = [HwPhotoHelper getAllPhotoAlbums];
+    
 }
 - (void)viewDidAppear:(BOOL)animated
 {
+    [gaBannerView loadRequest:[GADRequest request]];
     [super viewDidAppear:animated];
 }
 - (void)didReceiveMemoryWarning {
@@ -51,6 +57,14 @@
     hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         libraryMetaPhotos = [NSMutableArray array];
+//        PHAssetCollection *collection;
+//        if (selectedAlbumIndex == 0){
+//            //all photos
+//        } else {
+//            collection = imageCollections[selectedAlbumIndex - 1];
+//        }
+//        NSMutableArray *onePixels = [NSMutableArray new];
+//        NSArray *thumbnails = [HwPhotoHelper getAllThumbnailPhotosFromAlbum:collection onePixels:onePixels];
         [HwPhotoHelper getAllThumbnailPhotosFromLibraryWithResponse:^(NSMutableArray *thumbnails) {
             //process thumbnails
             NSInteger imageCount = thumbnails.count;
@@ -63,8 +77,10 @@
                 metaPhoto.averageColor = image.mergedColor;
                 [libraryMetaPhotos addObject:metaPhoto];
                 index ++;
-                hud.detailsLabelText = [NSString stringWithFormat: @"Processing %ld/%ld...", index, imageCount];
-                hud.progress = 1.0f * index/imageCount;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    hud.detailsLabel.text = [NSString stringWithFormat: @"Processing %ld/%ld...", index, imageCount];
+                    hud.progress = 1.0f * index/imageCount;
+                });
             }
             NSLog(@"Scan library done: %f", -[startDate timeIntervalSinceNow]);
 
@@ -119,5 +135,22 @@
 }
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
     NSLog(@"Ad received");
+}
+
+#pragma mark picker view
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return imageCollections.count + 1;
+}
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    if (row == 0){
+        return @"All Photos";
+    }
+    return imageCollections[row-1].localizedTitle;
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    selectedAlbumIndex = row;
 }
 @end

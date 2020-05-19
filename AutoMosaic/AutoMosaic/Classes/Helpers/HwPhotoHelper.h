@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class PHAssetCollection;
 @interface HwPhotoHelper : NSObject
 + (void)getAllThumbnailPhotosFromLibraryWithResponse:(void(^)(NSMutableArray *thumbnails)) block;
++ (NSArray <PHAssetCollection*> *)getAllPhotoAlbums;
++ (NSArray *)getAllThumbnailPhotosFromAlbum:(PHAssetCollection *) collection onePixels:(NSMutableArray *)onePixels;
 @end

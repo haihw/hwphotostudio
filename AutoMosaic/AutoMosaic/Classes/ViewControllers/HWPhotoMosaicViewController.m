@@ -52,6 +52,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated
 {
+    [_GAdBanner loadRequest:[GADRequest request]];
     [super viewDidAppear:animated];
 }
 /*
@@ -70,10 +71,11 @@
     hud.mode = MBProgressHUDModeDeterminate;
     _btnCompare.enabled = NO;
     _btnProcess.enabled = NO;
+    NSInteger sampleSize = (NSInteger) _sliderSampleSize.value;
+    NSInteger mosaicSize = (NSInteger) _sliderMosaicSize.value;
+
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Do something...
-        NSInteger sampleSize = (NSInteger) _sliderSampleSize.value;
-        NSInteger mosaicSize = (NSInteger) _sliderMosaicSize.value;
         NSDictionary *params = @{
                                  @"metric":@"1", //riemersmaDistanceTo
                                  @"dx"    :[NSNumber numberWithInteger:mosaicSize],
@@ -82,21 +84,21 @@
                                  @"height":[NSNumber numberWithInteger:sampleSize],
                                  };
         [_inputImage createMosaicWithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
-            if (mosaicImage){
-                dispatch_async(dispatch_get_main_queue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (mosaicImage){
                     _btnCompare.enabled = YES;
                     _btnProcess.enabled = YES;
-
+                    
                     _imageView.image = mosaicImage;
                     outputImage = mosaicImage;
-//                    UIImageWriteToSavedPhotosAlbum(mosaicImage, nil, nil, nil);
+                    //                    UIImageWriteToSavedPhotosAlbum(mosaicImage, nil, nil, nil);
                     [self showAd];
-
                     [HWProgressHUD hideHUDForView:_imageContainerView animated:YES];
-                });
-            }
-            hud.detailsLabelText = [NSString stringWithFormat:@"Processing %0.1f%%", percentage*100];
-            hud.progress = percentage;
+                }
+                
+                hud.detailsLabel.text = [NSString stringWithFormat:@"Processing %0.1f%%", percentage*100];
+                hud.progress = percentage;
+            });
         }];
     });
 }
@@ -106,7 +108,8 @@
     jtsImgInfo.image = _imageView.image;
     
     JTSImageViewController *imageViewController = [[JTSImageViewController alloc] initWithImageInfo:jtsImgInfo mode:JTSImageViewControllerMode_Image backgroundStyle:JTSImageViewControllerBackgroundOption_Blurred];
-    [imageViewController showFromViewController:self transition:JTSImageViewControllerTransition_FromOffscreen];
+    imageViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+    [imageViewController showFromViewController:self transition:JTSImageViewControllerTransition_FromOriginalPosition];
 }
 
 - (IBAction)sliderSampleSizeChange:(id)sender {

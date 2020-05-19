@@ -1,25 +1,70 @@
 PODS:
-  - ASValueTrackingSlider (0.11.2)
-  - Google-Mobile-Ads-SDK (7.4.1)
-  - iRate (1.11.3)
-  - JTSImageViewController (1.4)
-  - MBProgressHUD (0.9)
+  - ASValueTrackingSlider (0.12.1)
+  - Google-Mobile-Ads-SDK (7.59.0):
+    - GoogleAppMeasurement (~> 6.0)
+  - GoogleAppMeasurement (6.5.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 1.30905.0)
+  - GoogleUtilities/AppDelegateSwizzler (6.6.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.6.0):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (6.6.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.6.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.6.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.6.0)"
+  - GoogleUtilities/Reachability (6.6.0):
+    - GoogleUtilities/Logger
+  - iRate (1.12.2)
+  - MBProgressHUD (1.2.0)
   - MTColorDistance (0.0.3)
+  - nanopb (1.30905.0):
+    - nanopb/decode (= 1.30905.0)
+    - nanopb/encode (= 1.30905.0)
+  - nanopb/decode (1.30905.0)
+  - nanopb/encode (1.30905.0)
+  - PromisesObjC (1.2.8)
 
 DEPENDENCIES:
   - ASValueTrackingSlider
-  - Google-Mobile-Ads-SDK (~> 7.0)
+  - Google-Mobile-Ads-SDK
   - iRate
-  - JTSImageViewController
   - MBProgressHUD
   - MTColorDistance
 
-SPEC CHECKSUMS:
-  ASValueTrackingSlider: 45c9f78252da60de01d8f2afe869aaf90dd978d9
-  Google-Mobile-Ads-SDK: dce4c2728daa0bcbd88b6e3dc111b718a07b1eb6
-  iRate: 5e1978bac8b3f3f0296dbeccc0dd7b50e6e50657
-  JTSImageViewController: 6a367b144e257db02cdfacdba78d684377d3777b
-  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
-  MTColorDistance: 32914deeb3061f00b9be7a1a3afb4581a85b4868
+SPEC REPOS:
+  trunk:
+    - ASValueTrackingSlider
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - iRate
+    - MBProgressHUD
+    - MTColorDistance
+    - nanopb
+    - PromisesObjC
 
-COCOAPODS: 0.39.0
+SPEC CHECKSUMS:
+  ASValueTrackingSlider: 5261de3fcf00adb339efc93885e8f0bc99e703cd
+  Google-Mobile-Ads-SDK: 118217ac8b80e28aabe0c00aedab1cd885857776
+  GoogleAppMeasurement: 4c644d86835d827bab30ab6aabb9ecaf1f500735
+  GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
+  iRate: 4fc69958788624545e5d050c8ffd20884013c3f1
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MTColorDistance: 5ab8708eb88bc22d4d88e309d09eb912f3a6e27b
+  nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+
+PODFILE CHECKSUM: 9dd2713c64a0f584e3ae67dbfdd929055013b0b1
+
+COCOAPODS: 1.9.1

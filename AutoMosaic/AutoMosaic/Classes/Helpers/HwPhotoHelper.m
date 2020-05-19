@@ -8,12 +8,72 @@
 
 #import "HwPhotoHelper.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+@import Photos;
 @implementation HwPhotoHelper
+
++ (NSArray *)getAllThumbnailPhotosFromAlbum:(PHAssetCollection *) collection onePixels:(NSMutableArray *)onePixels{
+    PHFetchOptions *onlyImagesOptions = [PHFetchOptions new];
+    onlyImagesOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %i", PHAssetMediaTypeImage];
+    PHFetchResult *result = [PHAsset fetchAssetsInAssetCollection:collection options:onlyImagesOptions];
+    NSMutableArray *thumbnails = [NSMutableArray new];
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.resizeMode = PHImageRequestOptionsResizeModeFast;
+    options.synchronous = YES;
+    options.networkAccessAllowed = NO;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+    
+    NSMutableArray *assets = [NSMutableArray new];
+    
+    [result enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
+        NSLog(@"asset %@", asset);
+        [assets addObject:asset];
+    }];
+    for (PHAsset *asset in assets){
+        [[PHImageManager defaultManager] requestImageForAsset:asset
+                                                   targetSize:CGSizeMake(150, 150)
+                                                  contentMode:PHImageContentModeAspectFill
+                                                      options:options
+                                                resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            [thumbnails addObject:result];
+            
+        }];
+        [[PHImageManager defaultManager] requestImageForAsset:asset
+                                                   targetSize:CGSizeMake(1, 1)
+                                                  contentMode:PHImageContentModeAspectFill
+                                                      options:options
+                                                resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            [onePixels addObject:result];
+        }];
+    }
+    return thumbnails;
+}
++ (NSArray <PHAssetCollection*> *)getAllPhotoAlbums{
+    PHFetchOptions *userAlbumsOptions = [PHFetchOptions new];
+//    userAlbumsOptions.predicate = [NSPredicate predicateWithFormat:@"estimatedAssetCount > 0"];
+
+   PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum
+                                                                        subtype:PHAssetCollectionSubtypeAny
+                                                                        options:userAlbumsOptions];
+    NSMutableArray *albums = [NSMutableArray new];
+    [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
+        NSLog(@"album title %@", collection.localizedTitle);
+        [albums addObject:collection];
+    }];
+    userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
+                                                                         subtype:PHAssetCollectionSubtypeAny
+                                                                         options:userAlbumsOptions];
+    [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
+        NSLog(@"album title %@", collection.localizedTitle);
+        [albums addObject:collection];
+    }];
+    return albums;
+}
 + (void)getAllThumbnailPhotosFromLibraryWithResponse:(void(^)(NSMutableArray *thumbnails)) block
 {
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     NSMutableArray *thumbnails = [NSMutableArray array];
-    // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
+    
+    // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.ALAssetsGroupEvent
     [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         // When the enumeration is done, 'enumerationBlock' will be called with group set to nil.
         if (!group)
@@ -21,6 +81,7 @@
             block (thumbnails);
         } else {
             // Within the group enumeration block, filter to enumerate just photos.
+            NSLog(@"Group: %@", [group valueForProperty:ALAssetsGroupPropertyName]);
             [group setAssetsFilter:[ALAssetsFilter allPhotos]];
             [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
                 // The end of the enumeration is signaled by asset == nil.

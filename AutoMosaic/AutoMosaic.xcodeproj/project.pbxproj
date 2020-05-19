@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC557A15251B2F630819DF18 /* libPods-Mosaicify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE23114F93C83FDA272EE58 /* libPods-Mosaicify.a */; };
+		C52D62022473BD32002C157B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52D62012473BD32002C157B /* Photos.framework */; };
+		C52D62042473BD3C002C157B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52D62032473BD3C002C157B /* PhotosUI.framework */; };
+		C52D62122473E17A002C157B /* JTSImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C52D62062473E17A002C157B /* JTSImageInfo.m */; };
+		C52D62132473E17A002C157B /* UIApplication+JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52D62072473E17A002C157B /* UIApplication+JTSImageViewController.m */; };
+		C52D62142473E17A002C157B /* JTSAnimatedGIFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C52D620B2473E17A002C157B /* JTSAnimatedGIFUtility.m */; };
+		C52D62152473E17A002C157B /* UIImage+JTSImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = C52D620D2473E17A002C157B /* UIImage+JTSImageEffects.m */; };
+		C52D62162473E17A002C157B /* JTSSimpleImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C52D62102473E17A002C157B /* JTSSimpleImageDownloader.m */; };
+		C52D62172473E17A002C157B /* JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52D62112473E17A002C157B /* JTSImageViewController.m */; };
 		C55B66061A4570BD00585865 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65F01A4570BD00585865 /* AppDelegate.m */; };
 		C55B66071A4570BD00585865 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65F41A4570BD00585865 /* main.m */; };
 		C55B66081A4570BD00585865 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B65F71A4570BD00585865 /* ViewController.m */; };
-		C55B66091A4570BD00585865 /* AutoMosaic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C55B65FB1A4570BD00585865 /* AutoMosaic.xcdatamodeld */; };
 		C55B660D1A4570BD00585865 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C55B66041A4570BD00585865 /* Images.xcassets */; };
 		C55B66121A45C42400585865 /* HwPhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66111A45C42400585865 /* HwPhotoHelper.m */; };
 		C55B66141A45C4E000585865 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55B66131A45C4DF00585865 /* AssetsLibrary.framework */; };
@@ -22,17 +30,31 @@
 		C55B662C1A45F87A00585865 /* UIColor+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662B1A45F87A00585865 /* UIColor+Metrics.m */; };
 		C55B662F1A46020600585865 /* UIImage+HWMosaic.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B662E1A46020600585865 /* UIImage+HWMosaic.m */; };
 		C55B66321A46B9DB00585865 /* HWSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66311A46B9DB00585865 /* HWSettingViewController.m */; };
+		C5A0D520247416E8002AB3B2 /* HWSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A0D51F247416E8002AB3B2 /* HWSetting.m */; };
 		C5E160571C4175D500CAA19E /* mosaic_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E160561C4175D500CAA19E /* mosaic_sample.png */; };
 		C5E160591C417B0A00CAA19E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E160581C417B0A00CAA19E /* iAd.framework */; };
 		C5F5F47A1A4FA72300DFC256 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4751A4FA72300DFC256 /* UIImage+Alpha.m */; };
 		C5F5F47B1A4FA72300DFC256 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4771A4FA72300DFC256 /* UIImage+Resize.m */; };
 		C5F5F47C1A4FA72300DFC256 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4791A4FA72300DFC256 /* UIImage+RoundedCorner.m */; };
-		DC33F60FCF2B7E9ED8B974A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F961299844C7B109C308CEE7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B81C6540DA5F6D494A35428 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		AAFC7BFF52239242D6B1F39B /* Pods-Mosaicify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaicify.debug.xcconfig"; path = "Target Support Files/Pods-Mosaicify/Pods-Mosaicify.debug.xcconfig"; sourceTree = "<group>"; };
 		C523C77C1C57DCC700AC5F90 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C52D62012473BD32002C157B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		C52D62032473BD3C002C157B /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		C52D62062473E17A002C157B /* JTSImageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSImageInfo.m; sourceTree = "<group>"; };
+		C52D62072473E17A002C157B /* UIApplication+JTSImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+JTSImageViewController.m"; sourceTree = "<group>"; };
+		C52D62082473E17A002C157B /* UIImage+JTSImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JTSImageEffects.h"; sourceTree = "<group>"; };
+		C52D62092473E17A002C157B /* JTSImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSImageViewController.h; sourceTree = "<group>"; };
+		C52D620A2473E17A002C157B /* JTSSimpleImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSSimpleImageDownloader.h; sourceTree = "<group>"; };
+		C52D620B2473E17A002C157B /* JTSAnimatedGIFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSAnimatedGIFUtility.m; sourceTree = "<group>"; };
+		C52D620C2473E17A002C157B /* JTSImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSImageInfo.h; sourceTree = "<group>"; };
+		C52D620D2473E17A002C157B /* UIImage+JTSImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JTSImageEffects.m"; sourceTree = "<group>"; };
+		C52D620E2473E17A002C157B /* UIApplication+JTSImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+JTSImageViewController.h"; sourceTree = "<group>"; };
+		C52D620F2473E17A002C157B /* JTSAnimatedGIFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSAnimatedGIFUtility.h; sourceTree = "<group>"; };
+		C52D62102473E17A002C157B /* JTSSimpleImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSSimpleImageDownloader.m; sourceTree = "<group>"; };
+		C52D62112473E17A002C157B /* JTSImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSImageViewController.m; sourceTree = "<group>"; };
 		C55B65C11A456FDC00585865 /* Mosaicify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mosaicify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55B65E21A456FDC00585865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C55B65E31A456FDC00585865 /* AutoMosaicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoMosaicTests.m; sourceTree = "<group>"; };
@@ -41,7 +63,6 @@
 		C55B65F41A4570BD00585865 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C55B65F61A4570BD00585865 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C55B65F71A4570BD00585865 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C55B65FC1A4570BD00585865 /* AutoMosaic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AutoMosaic.xcdatamodel; sourceTree = "<group>"; };
 		C55B65FE1A4570BD00585865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C55B66001A4570BD00585865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C55B66011A4570BD00585865 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,6 +83,8 @@
 		C55B662E1A46020600585865 /* UIImage+HWMosaic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HWMosaic.m"; sourceTree = "<group>"; };
 		C55B66301A46B9DB00585865 /* HWSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWSettingViewController.h; sourceTree = "<group>"; };
 		C55B66311A46B9DB00585865 /* HWSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWSettingViewController.m; sourceTree = "<group>"; };
+		C5A0D51E247416E8002AB3B2 /* HWSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWSetting.h; sourceTree = "<group>"; };
+		C5A0D51F247416E8002AB3B2 /* HWSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HWSetting.m; sourceTree = "<group>"; };
 		C5E160561C4175D500CAA19E /* mosaic_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mosaic_sample.png; sourceTree = "<group>"; };
 		C5E160581C417B0A00CAA19E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C5F5F4741A4FA72300DFC256 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
@@ -70,8 +93,8 @@
 		C5F5F4771A4FA72300DFC256 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		C5F5F4781A4FA72300DFC256 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		C5F5F4791A4FA72300DFC256 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
-		F961299844C7B109C308CEE7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAC9333B3B4213CC94227CAA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FBE23114F93C83FDA272EE58 /* libPods-Mosaicify.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Mosaicify.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDADE489F5BCDBCE69F05F04 /* Pods-Mosaicify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaicify.release.xcconfig"; path = "Target Support Files/Pods-Mosaicify/Pods-Mosaicify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,22 +102,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C52D62042473BD3C002C157B /* PhotosUI.framework in Frameworks */,
+				C52D62022473BD32002C157B /* Photos.framework in Frameworks */,
 				C5E160591C417B0A00CAA19E /* iAd.framework in Frameworks */,
 				C55B66141A45C4E000585865 /* AssetsLibrary.framework in Frameworks */,
-				DC33F60FCF2B7E9ED8B974A2 /* libPods.a in Frameworks */,
+				AC557A15251B2F630819DF18 /* libPods-Mosaicify.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AF967A65A2C1D68C97BA1F14 /* Pods */ = {
+		21583362D361B7DC8F58D092 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FAC9333B3B4213CC94227CAA /* Pods.debug.xcconfig */,
-				8B81C6540DA5F6D494A35428 /* Pods.release.xcconfig */,
+				AAFC7BFF52239242D6B1F39B /* Pods-Mosaicify.debug.xcconfig */,
+				FDADE489F5BCDBCE69F05F04 /* Pods-Mosaicify.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C52D62052473E17A002C157B /* JTSImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C52D62062473E17A002C157B /* JTSImageInfo.m */,
+				C52D62072473E17A002C157B /* UIApplication+JTSImageViewController.m */,
+				C52D62082473E17A002C157B /* UIImage+JTSImageEffects.h */,
+				C52D62092473E17A002C157B /* JTSImageViewController.h */,
+				C52D620A2473E17A002C157B /* JTSSimpleImageDownloader.h */,
+				C52D620B2473E17A002C157B /* JTSAnimatedGIFUtility.m */,
+				C52D620C2473E17A002C157B /* JTSImageInfo.h */,
+				C52D620D2473E17A002C157B /* UIImage+JTSImageEffects.m */,
+				C52D620E2473E17A002C157B /* UIApplication+JTSImageViewController.h */,
+				C52D620F2473E17A002C157B /* JTSAnimatedGIFUtility.h */,
+				C52D62102473E17A002C157B /* JTSSimpleImageDownloader.m */,
+				C52D62112473E17A002C157B /* JTSImageViewController.m */,
+			);
+			path = JTSImageViewController;
 			sourceTree = "<group>";
 		};
 		C55B65B81A456FDC00585865 = {
@@ -104,8 +148,8 @@
 				C55B65C31A456FDC00585865 /* AutoMosaic */,
 				C55B65E01A456FDC00585865 /* AutoMosaicTests */,
 				C55B66151A45C4F800585865 /* Frameworks */,
-				AF967A65A2C1D68C97BA1F14 /* Pods */,
 				C55B65C21A456FDC00585865 /* Products */,
+				21583362D361B7DC8F58D092 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +213,7 @@
 		C55B65F11A4570BD00585865 /* GlobalLibs */ = {
 			isa = PBXGroup;
 			children = (
+				C52D62052473E17A002C157B /* JTSImageViewController */,
 			);
 			path = GlobalLibs;
 			sourceTree = "<group>";
@@ -231,7 +276,6 @@
 		C55B65FA1A4570BD00585865 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C55B65FB1A4570BD00585865 /* AutoMosaic.xcdatamodeld */,
 				C55B65FD1A4570BD00585865 /* LaunchScreen.xib */,
 				C55B65FF1A4570BD00585865 /* Main.storyboard */,
 				C55B66011A4570BD00585865 /* Info.plist */,
@@ -266,9 +310,11 @@
 		C55B66151A45C4F800585865 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C52D62032473BD3C002C157B /* PhotosUI.framework */,
+				C52D62012473BD32002C157B /* Photos.framework */,
 				C5E160581C417B0A00CAA19E /* iAd.framework */,
 				C55B66131A45C4DF00585865 /* AssetsLibrary.framework */,
-				F961299844C7B109C308CEE7 /* libPods.a */,
+				FBE23114F93C83FDA272EE58 /* libPods-Mosaicify.a */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -276,6 +322,8 @@
 		C55B66261A45F7C100585865 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C5A0D51E247416E8002AB3B2 /* HWSetting.h */,
+				C5A0D51F247416E8002AB3B2 /* HWSetting.m */,
 				C55B66271A45F7CC00585865 /* MetaPhoto.h */,
 				C55B66281A45F7CC00585865 /* MetaPhoto.m */,
 			);
@@ -302,12 +350,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C55B65E71A456FDC00585865 /* Build configuration list for PBXNativeTarget "Mosaicify" */;
 			buildPhases = (
-				6B044ADBBA61CC5E325BC788 /* Check Pods Manifest.lock */,
+				25463E797119CF53D978F890 /* [CP] Check Pods Manifest.lock */,
 				C55B65BD1A456FDC00585865 /* Sources */,
 				C55B65BE1A456FDC00585865 /* Frameworks */,
 				C55B65BF1A456FDC00585865 /* Resources */,
-				7384488F630BE9A3E705AD62 /* Copy Pods Resources */,
-				FFE42F655D3DAC3F7256106E /* Embed Pods Frameworks */,
+				9B2B2AB5A5D88C8767FC4D2C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -331,6 +378,7 @@
 					C55B65C01A456FDC00585865 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = 47NZJ66X5R;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -339,6 +387,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -367,49 +416,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B044ADBBA61CC5E325BC788 /* Check Pods Manifest.lock */ = {
+		25463E797119CF53D978F890 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mosaicify-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7384488F630BE9A3E705AD62 /* Copy Pods Resources */ = {
+		9B2B2AB5A5D88C8767FC4D2C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mosaicify/Pods-Mosaicify-resources.sh",
+				"${PODS_ROOT}/iRate/iRate/iRate.bundle",
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/iRate.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FFE42F655D3DAC3F7256106E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mosaicify/Pods-Mosaicify-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -419,7 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C55B66091A4570BD00585865 /* AutoMosaic.xcdatamodeld in Sources */,
+				C52D62142473E17A002C157B /* JTSAnimatedGIFUtility.m in Sources */,
 				C55B66191A45CFF700585865 /* HWProgressHUD.m in Sources */,
 				C5F5F47C1A4FA72300DFC256 /* UIImage+RoundedCorner.m in Sources */,
 				C55B662C1A45F87A00585865 /* UIColor+Metrics.m in Sources */,
@@ -429,9 +473,15 @@
 				C55B662F1A46020600585865 /* UIImage+HWMosaic.m in Sources */,
 				C55B66321A46B9DB00585865 /* HWSettingViewController.m in Sources */,
 				C5F5F47A1A4FA72300DFC256 /* UIImage+Alpha.m in Sources */,
+				C52D62122473E17A002C157B /* JTSImageInfo.m in Sources */,
+				C52D62152473E17A002C157B /* UIImage+JTSImageEffects.m in Sources */,
 				C55B66061A4570BD00585865 /* AppDelegate.m in Sources */,
 				C5F5F47B1A4FA72300DFC256 /* UIImage+Resize.m in Sources */,
+				C52D62162473E17A002C157B /* JTSSimpleImageDownloader.m in Sources */,
+				C5A0D520247416E8002AB3B2 /* HWSetting.m in Sources */,
+				C52D62172473E17A002C157B /* JTSImageViewController.m in Sources */,
 				C55B66121A45C42400585865 /* HwPhotoHelper.m in Sources */,
+				C52D62132473E17A002C157B /* UIApplication+JTSImageViewController.m in Sources */,
 				C55B66291A45F7CC00585865 /* MetaPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,7 +543,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -529,7 +579,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -539,38 +589,44 @@
 		};
 		C55B65E81A456FDC00585865 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAC9333B3B4213CC94227CAA /* Pods.debug.xcconfig */;
+			baseConfigurationReference = AAFC7BFF52239242D6B1F39B /* Pods-Mosaicify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.mosaicify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		C55B65E91A456FDC00585865 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B81C6540DA5F6D494A35428 /* Pods.release.xcconfig */;
+			baseConfigurationReference = FDADE489F5BCDBCE69F05F04 /* Pods-Mosaicify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Hai Nguyen Huu Hiep (47NZJ66X5R)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hai Nguyen Huu Hiep (47NZJ66X5R)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.mosaicify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3a3e76ab-4b49-4e0d-b1d2-3622b2f3818b";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -597,19 +653,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		C55B65FB1A4570BD00585865 /* AutoMosaic.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C55B65FC1A4570BD00585865 /* AutoMosaic.xcdatamodel */,
-			);
-			currentVersion = C55B65FC1A4570BD00585865 /* AutoMosaic.xcdatamodel */;
-			path = AutoMosaic.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C55B65B91A456FDC00585865 /* Project object */;
 }

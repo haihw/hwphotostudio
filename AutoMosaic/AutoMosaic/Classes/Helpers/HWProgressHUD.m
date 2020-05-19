@@ -18,23 +18,19 @@
 */
 
 + (HWProgressHUD *)showHUDAddedTo:(UIView *)view animated:(BOOL)animated withTitle:(NSString*) title {
-    HWProgressHUD *hud = [[super alloc] initWithView:view];
-    hud.detailsLabelText = title;
-    hud.color = [UIColor colorWithWhite:0.5f alpha:0.5f];
-    hud.detailsLabelColor = [UIColor greenColor];
-    [view addSubview:hud];
-    [hud show:animated];
-    return hud;
+    return [self showHUDAddedTo:view dimBackground:NO animated:animated withTitle:title];
 }
 
 + (HWProgressHUD *)showHUDAddedTo:(UIView *)view dimBackground:(BOOL) shouldDim animated:(BOOL)animated withTitle:(NSString*) title {
     HWProgressHUD *hud = [[super alloc] initWithView:view];
-    hud.color = [UIColor colorWithWhite:0.5f alpha:0.5f];
-    hud.detailsLabelColor = [UIColor greenColor];
-    hud.dimBackground = shouldDim;
-    hud.detailsLabelText = title;
+    hud.detailsLabel.text = title;
+    hud.label.textColor = [UIColor colorWithWhite:0.5f alpha:0.5f];
+    hud.detailsLabel.textColor = [UIColor greenColor];
+    if (shouldDim){
+        hud.backgroundView.alpha = 0.5f;
+    }
     [view addSubview:hud];
-    [hud show:animated];
+    [hud showAnimated:animated];
     return hud;
 }
 @end
