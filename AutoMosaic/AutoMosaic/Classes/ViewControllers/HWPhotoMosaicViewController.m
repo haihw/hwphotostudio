@@ -40,10 +40,6 @@
     
     _GAdBanner.adUnitID = kGADBannerUnitID;
     _GAdBanner.rootViewController = self;
-    [_GAdBanner loadRequest:[GADRequest request]];
-
-//    _iAdTopBanner.hidden = YES;
-    _GAdBanner.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,20 +79,20 @@
                                  @"width" :[NSNumber numberWithInteger:sampleSize],
                                  @"height":[NSNumber numberWithInteger:sampleSize],
                                  };
-        [_inputImage createMosaicWithMetaPhotos:_metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
+        [self.inputImage createMosaicWithMetaPhotos: self.metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (mosaicImage){
-                    _btnCompare.enabled = YES;
-                    _btnProcess.enabled = YES;
+                    self.btnCompare.enabled = YES;
+                    self.btnProcess.enabled = YES;
                     
-                    _imageView.image = mosaicImage;
-                    outputImage = mosaicImage;
-                    _lbDescription.text = [NSString stringWithFormat:@"Result size: %0.2f Megapixels", 1.0f * mosaicImage.size.height * mosaicImage.size.width / 1024 / 1024];
+                    self.imageView.image = mosaicImage;
+                    self->outputImage = mosaicImage;
+                    self.lbDescription.text = [NSString stringWithFormat:@"Result size: %0.2f Megapixels", 1.0f * mosaicImage.size.height * mosaicImage.size.width / 1024 / 1024];
                     float time = [[NSDate date] timeIntervalSinceDate:startTime];
-                    _lbProcessingTime.text = [NSString stringWithFormat:@"Process time: %0.2f s", time];
+                    self.lbProcessingTime.text = [NSString stringWithFormat:@"Process time: %0.2f s", time];
                     //                    UIImageWriteToSavedPhotosAlbum(mosaicImage, nil, nil, nil);
                     [self showAd];
-                    [HWProgressHUD hideHUDForView:_imageContainerView animated:YES];
+                    [HWProgressHUD hideHUDForView: self.imageContainerView animated:YES];
                 }
                 
                 hud.detailsLabel.text = [NSString stringWithFormat:@"Processing %0.1f%%", percentage*100];
@@ -192,32 +188,17 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 #pragma mark GADBannerViewDelegate implementation
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
     NSLog(@"GAd banner did receive ad");
-    _GAdBanner.hidden = NO;
-    _iAdTopBanner.hidden = YES;
 }
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
 {
     NSLog(@"GAd failed: %@", error.localizedDescription);
-    _GAdBanner.hidden = YES;
-    _iAdTopBanner.hidden = NO;
-}
-#pragma mark - AdBannerDelegate
-- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
-    NSLog(@"Ad failed: %@", error.localizedDescription);
-}
--(void)bannerViewWillLoadAd:(ADBannerView *)banner{
-    NSLog(@"Ad banner will be loaded");
-}
--(void)bannerViewDidLoadAd:(ADBannerView *)banner{
-    NSLog(@"Ad banner did load");
-    if (_GAdBanner.hidden){
-        _iAdTopBanner.hidden = NO;
-    }
-}
+    [_GAdBanner performSelector:@selector(loadRequest:) withObject:[GADRequest request] afterDelay:5];
 
+}
 #pragma mark - ad interstitialAd delegate
 - (void)interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error{
     NSLog(@"Ad failed: %@", error.localizedDescription);
+    [self performSelector:@selector(showAd) withObject:nil afterDelay:5];
 }
 - (void)interstitialAdWillLoad:(ADInterstitialAd *)interstitialAd{
     NSLog(@"Ad interstitial will load");

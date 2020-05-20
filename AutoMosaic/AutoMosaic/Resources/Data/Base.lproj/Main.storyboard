@@ -180,20 +180,29 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-Vg-42a">
                                 <rect key="frame" x="20" y="8" width="335" height="651"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mosaicify" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8U-L4-YbK">
+                                        <rect key="frame" x="123.5" y="0.0" width="88" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="agF-Wa-HWQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0U-XJ-DVl" userLabel="Image Container View">
-                                        <rect key="frame" x="20" y="0.0" width="295" height="399"/>
+                                        <rect key="frame" x="20" y="34" width="295" height="365"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="leh-K8-JpU">
-                                                <rect key="frame" x="20" y="20" width="255" height="359"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="365"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="leh-K8-JpU" secondAttribute="bottom" constant="20" symbolic="YES" id="4Yw-p7-JmN"/>
-                                            <constraint firstItem="leh-K8-JpU" firstAttribute="top" secondItem="W0U-XJ-DVl" secondAttribute="top" constant="20" symbolic="YES" id="ERe-Us-FsD"/>
-                                            <constraint firstItem="leh-K8-JpU" firstAttribute="leading" secondItem="W0U-XJ-DVl" secondAttribute="leading" constant="20" symbolic="YES" id="Hyi-mO-7t7"/>
-                                            <constraint firstAttribute="trailing" secondItem="leh-K8-JpU" secondAttribute="trailing" constant="20" symbolic="YES" id="fqf-40-eKd"/>
+                                            <constraint firstAttribute="bottom" secondItem="leh-K8-JpU" secondAttribute="bottom" id="4Yw-p7-JmN"/>
+                                            <constraint firstItem="leh-K8-JpU" firstAttribute="top" secondItem="W0U-XJ-DVl" secondAttribute="top" id="ERe-Us-FsD"/>
+                                            <constraint firstItem="leh-K8-JpU" firstAttribute="leading" secondItem="W0U-XJ-DVl" secondAttribute="leading" id="Hyi-mO-7t7"/>
+                                            <constraint firstAttribute="trailing" secondItem="leh-K8-JpU" secondAttribute="trailing" id="fqf-40-eKd"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="rnN-J7-d2s" appends="YES" id="wbb-cm-Tsk"/>

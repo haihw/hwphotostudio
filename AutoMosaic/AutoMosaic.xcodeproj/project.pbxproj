@@ -97,6 +97,7 @@
 		C5A0D5282475003A002AB3B2 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 		C5A0D5292475003D002AB3B2 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		C5A0D52E24750096002AB3B2 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PromisesObjC.xcframework; sourceTree = "<group>"; };
+		C5A0D5302475038C002AB3B2 /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
 		C5E160561C4175D500CAA19E /* mosaic_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mosaic_sample.png; sourceTree = "<group>"; };
 		C5E160581C417B0A00CAA19E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C5F5F4741A4FA72300DFC256 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
@@ -297,6 +298,7 @@
 		C55B65FA1A4570BD00585865 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C5A0D5302475038C002AB3B2 /* Futura.ttc */,
 				C55B65FD1A4570BD00585865 /* LaunchScreen.xib */,
 				C55B65FF1A4570BD00585865 /* Main.storyboard */,
 				C55B66011A4570BD00585865 /* Info.plist */,

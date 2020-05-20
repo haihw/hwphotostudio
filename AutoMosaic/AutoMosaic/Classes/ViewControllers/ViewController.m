@@ -20,7 +20,7 @@
     __weak IBOutlet UIPickerView *albumPicker;
     UIImage *inputImage;
     NSMutableArray *libraryMetaPhotos;
-    IBOutlet GADBannerView *gaBannerView;
+    __weak IBOutlet GADBannerView *gaBannerView;
     NSArray <PHAssetCollection*> *imageCollections;
 //    NSArray <ALAssetsGroup*> *imageGroups;
     NSInteger selectedAlbumIndex;
@@ -36,8 +36,6 @@
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
     gaBannerView.adUnitID = kGADBannerUnitID;
     gaBannerView.rootViewController = self;
-    [gaBannerView loadRequest:[GADRequest request]];
-//    [self scanLibrary2];
     imageCollections = [HwPhotoHelper getAllPhotoAlbums];
 //    [self loadData];
     
@@ -214,6 +212,7 @@
 -(void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
 {
     NSLog(@"%@", error.localizedDescription);
+    [gaBannerView performSelector:@selector(loadRequest:) withObject:[GADRequest request] afterDelay:5];
 }
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
     NSLog(@"Ad received");

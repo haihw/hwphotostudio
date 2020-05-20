@@ -25,7 +25,6 @@
 - (IBAction)sliderSampleSizeChange:(id)sender;
 - (IBAction)sliderMosaicSizeChange:(id)sender;
 - (IBAction)btnShareTapped:(id)sender;
-@property (strong, nonatomic) IBOutlet ADBannerView *iAdTopBanner;
-@property (strong, nonatomic) IBOutlet GADBannerView *GAdBanner;
+@property (weak, nonatomic) IBOutlet GADBannerView *GAdBanner;
 
 @end
