@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 @class PHAssetCollection, ALAssetsGroup;
 @interface HwPhotoHelper : NSObject
-+ (void)getAllPhotoAlbumsWithResponse:(void(^)(NSArray <ALAssetsGroup*> *albums)) block;
-+ (void)getThumbnailsFromGroup:(ALAssetsGroup *)group
-                      response: (void(^)(NSMutableArray *thumbnails)) block;
-+ (void)getAllThumbnailPhotosFromLibraryWithResponse:(void(^)(NSMutableArray *thumbnails)) block;
+//+ (void)getAllPhotoAlbumsWithResponse:(void(^)(NSArray <ALAssetsGroup*> *albums)) block;
+//+ (void)getThumbnailsFromGroup:(ALAssetsGroup *)group
+//                      response: (void(^)(NSMutableArray *thumbnails)) block;
+//+ (void)getAllThumbnailPhotosFromLibraryWithResponse:(void(^)(NSMutableArray *thumbnails)) block;
 /**
 required to call in background
  @param onePixels need to be empty array

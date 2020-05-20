@@ -22,7 +22,7 @@
     NSMutableArray *libraryMetaPhotos;
     IBOutlet GADBannerView *gaBannerView;
     NSArray <PHAssetCollection*> *imageCollections;
-    NSArray <ALAssetsGroup*> *imageGroups;
+//    NSArray <ALAssetsGroup*> *imageGroups;
     NSInteger selectedAlbumIndex;
 }
 @end
@@ -38,11 +38,12 @@
     gaBannerView.rootViewController = self;
     [gaBannerView loadRequest:[GADRequest request]];
 //    [self scanLibrary2];
-//    imageCollections = [HwPhotoHelper getAllPhotoAlbums];
-    [self loadData];
+    imageCollections = [HwPhotoHelper getAllPhotoAlbums];
+//    [self loadData];
     
 }
 - (void)loadData{
+    /*
     [HWProgressHUD showHUDAddedTo:self.view
                     dimBackground:YES
                          animated:YES
@@ -59,7 +60,7 @@
             
         }];
     });
-
+*/
 }
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -79,17 +80,13 @@
                                              withTitle:@"Scanning library..."];
     hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        libraryMetaPhotos = [NSMutableArray array];
+        self->libraryMetaPhotos = [NSMutableArray array];
         PHAssetCollection *collection;
         NSMutableArray *onePixels = [NSMutableArray new];
         NSArray *thumbnails;
 
-        if (selectedAlbumIndex == 0){
-            thumbnails = [HwPhotoHelper getAllThumbnailPhotosReturnWithOnePixels:onePixels];
-        } else {
-            collection = imageCollections[selectedAlbumIndex - 1];
-            thumbnails = [HwPhotoHelper getAllThumbnailPhotosFromAlbum:collection onePixels:onePixels];
-        }
+        collection = self->imageCollections[self->selectedAlbumIndex];
+        thumbnails = [HwPhotoHelper getAllThumbnailPhotosFromAlbum:collection onePixels:onePixels];
 //        NSAssert(onePixels.count == thumbnails.count, @"corrupted data");
         //process thumbnails
         NSInteger imageCount = thumbnails.count;
@@ -102,10 +99,10 @@
             metaPhoto.photo = thumbnails[i];
             UIImage * onePixel = thumbnails[i];
             metaPhoto.averageColor = onePixel.mergedColor;
-            [libraryMetaPhotos addObject:metaPhoto];
+            [self->libraryMetaPhotos addObject:metaPhoto];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                hud.detailsLabel.text = [NSString stringWithFormat: @"Processing %d/%ld...", i, imageCount];
+                hud.detailsLabel.text = [NSString stringWithFormat: @"Processing %d/%ld...", i, (long)imageCount];
                 hud.progress = 1.0f * index/imageCount;
             });
         }
@@ -113,7 +110,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [HWProgressHUD hideHUDForView:self.view animated:YES];
-            _lbPhotoNumber.text = [NSString stringWithFormat:@"%ld photos loaded", thumbnails.count];
+            self->_lbPhotoNumber.text = [NSString stringWithFormat:@"%lu photos loaded", (unsigned long)thumbnails.count];
             
         });
         
@@ -124,6 +121,7 @@
 //old
 - (void)scanLibrary2
 {
+    /*
     HWProgressHUD *hud = [HWProgressHUD showHUDAddedTo:self.view
                                          dimBackground:YES
                                               animated:YES
@@ -160,10 +158,10 @@
             
         }];
     });
-
+*/
 }
 - (IBAction)btnScanLibraryTapped:(id)sender {
-    [self scanLibrary2];
+    [self scanLibrary];
 }
 
 #pragma mark UIImagePickerControllerDelegate
@@ -178,10 +176,26 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+- (BOOL) isReadyToMosaicify{
+    if (libraryMetaPhotos.count == 0){
+        _lbPhotoNumber.text = @"0 photo loaded. Please select album and start scan library";
+    }
+    
+
+    return libraryMetaPhotos.count > 0;
+}
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if ([identifier isEqualToString:@"showImagePickerSegue"]){
+        return [self isReadyToMosaicify];
+    } else if ([identifier isEqualToString:@"mosaicSegue"])
+    {
+        return [self isReadyToMosaicify] && inputImage != nil;
+    }
+    return YES;
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"showImagePickerSegue"])
-    {
+    if ([segue.identifier isEqualToString:@"showImagePickerSegue"]){
         UIImagePickerController *controller = [[segue destinationViewController] init];
         controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         controller.delegate = self;
@@ -207,24 +221,21 @@
 
 #pragma mark picker view
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    NSLog(@"picker: %d", imageGroups.count);
-    return imageGroups.count;
-//    NSLog(@"picker: %d", imageCollections.count + 1);
-//    return imageCollections.count + 1;
+//    NSLog(@"picker: %d", imageGroups.count);
+//    return imageGroups.count;
+    NSLog(@"picker: %d", (int)imageCollections.count);
+    return imageCollections.count;
 }
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    ALAssetsGroup *group = imageGroups[row];
-    NSString *title  = [group valueForProperty:ALAssetsGroupPropertyName];
-    NSLog(@"picker: %@", title);
-    return title;
-//    if (row == 0){
-//        return @"All Photos";
-//    }
-//    NSLog(@"picker: %@", imageCollections[row-1].localizedTitle);
-//    return imageCollections[row-1].localizedTitle;
+//    ALAssetsGroup *group = imageGroups[row];
+//    NSString *title  = [group valueForProperty:ALAssetsGroupPropertyName];
+//    NSLog(@"picker: %@", title);
+//    return title;
+    NSLog(@"picker: %@", imageCollections[row].localizedTitle);
+    return imageCollections[row].localizedTitle;
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     selectedAlbumIndex = row;

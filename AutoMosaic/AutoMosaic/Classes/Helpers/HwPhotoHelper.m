@@ -15,10 +15,6 @@
  */
 + (NSArray *)getAllThumbnailPhotosReturnWithOnePixels:(NSMutableArray *)onePixels{
     NSAssert(onePixels.count == 0 && onePixels != nil, @"Wrong onepixel input");
-    PHFetchResult <PHCollection*> * result = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
-    [result enumerateObjectsUsingBlock:^(PHCollection* collection, NSUInteger idx, BOOL *stop) {
-        NSLog(@"Album name: %@", collection.localizedTitle);
-    }];
     PHFetchOptions *userAlbumsOptions = [PHFetchOptions new];
         userAlbumsOptions.predicate = [NSPredicate predicateWithFormat:@"estimatedAssetCount > 0"];
 
@@ -79,26 +75,58 @@
     return thumbnails;
 }
 + (NSArray <PHAssetCollection*> *)getAllPhotoAlbums{
-    PHFetchOptions *userAlbumsOptions = [PHFetchOptions new];
-//    userAlbumsOptions.predicate = [NSPredicate predicateWithFormat:@"estimatedAssetCount > 0"];
-
-   PHFetchResult *userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum
-                                                                        subtype:PHAssetCollectionSubtypeAny
-                                                                        options:userAlbumsOptions];
+//    PHFetchOptions *userAlbumsOptions = [PHFetchOptions new];
+//    userAlbumsOptions.predicate = [NSPredicate predicateWithFormat:@"estimatedAssetCount != 0"];
+    
+    PHFetchResult *userAlbums;
+    
     NSMutableArray *albums = [NSMutableArray new];
+    
+    //Recents - all photos
+    userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
+                                                          subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary
+                                                          options:nil];
     [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
-        NSLog(@"album title %@", collection.localizedTitle);
+        NSLog(@"album title %@ %d", collection.localizedTitle, (int)collection.estimatedAssetCount);
+        [albums addObject:collection];
+    }];
+
+    userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
+                                                          subtype:PHAssetCollectionSubtypeSmartAlbumFavorites
+                                                          options:nil];
+    [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
+        NSLog(@"album title %@ %d", collection.localizedTitle, (int)collection.estimatedAssetCount);
+        [albums addObject:collection];
+    }];
+    
+    userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
+                                                          subtype:PHAssetCollectionSubtypeSmartAlbumSelfPortraits
+                                                          options:nil];
+    [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
+        NSLog(@"album title %@ %d", collection.localizedTitle, (int)collection.estimatedAssetCount);
         [albums addObject:collection];
     }];
     userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
-                                                                         subtype:PHAssetCollectionSubtypeAny
-                                                                         options:userAlbumsOptions];
+                                                          subtype:PHAssetCollectionSubtypeSmartAlbumGeneric
+                                                          options:nil];
     [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
-        NSLog(@"album title %@", collection.localizedTitle);
+        NSLog(@"album title %@ %d", collection.localizedTitle, (int)collection.estimatedAssetCount);
         [albums addObject:collection];
+    }];
+
+    //local albums
+    userAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum
+    subtype:PHAssetCollectionSubtypeAny
+    options:nil];
+    [userAlbums enumerateObjectsUsingBlock:^(PHAssetCollection *collection, NSUInteger idx, BOOL *stop) {
+        NSLog(@"album title %@ %d", collection.localizedTitle, (int)collection.estimatedAssetCount);
+        if (collection.estimatedAssetCount > 10){
+            [albums addObject:collection];
+        }
     }];
     return albums;
 }
+/*
 #pragma mark - faster but old API
 + (void)getAllPhotoAlbumsWithResponse:(void(^)(NSArray <ALAssetsGroup*> *result)) block{
     NSMutableArray *result = [NSMutableArray new];
@@ -158,6 +186,7 @@
         NSLog(@"No groups");
     }];
 }
+ */
 + (NSArray*)getRGBAsFromImage:(UIImage*)image atX:(int)x andY:(int)y count:(int)count
 {
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:count];

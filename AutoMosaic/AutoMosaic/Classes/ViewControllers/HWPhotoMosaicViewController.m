@@ -73,7 +73,7 @@
     _btnProcess.enabled = NO;
     NSInteger sampleSize = (NSInteger) _sliderSampleSize.value;
     NSInteger mosaicSize = (NSInteger) _sliderMosaicSize.value;
-
+    NSDate *startTime = [NSDate date];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Do something...
         NSDictionary *params = @{
@@ -91,6 +91,9 @@
                     
                     _imageView.image = mosaicImage;
                     outputImage = mosaicImage;
+                    _lbDescription.text = [NSString stringWithFormat:@"Result size: %0.2f Megapixels", 1.0f * mosaicImage.size.height * mosaicImage.size.width / 1024 / 1024];
+                    float time = [[NSDate date] timeIntervalSinceDate:startTime];
+                    _lbProcessingTime.text = [NSString stringWithFormat:@"Process time: %0.2f s", time];
                     //                    UIImageWriteToSavedPhotosAlbum(mosaicImage, nil, nil, nil);
                     [self showAd];
                     [HWProgressHUD hideHUDForView:_imageContainerView animated:YES];
@@ -140,7 +143,18 @@
 }
 - (void)updateDescription{
     NSInteger size =  (NSInteger)_sliderMosaicSize.value * (NSInteger)_sliderSampleSize.value;
-    _lbDescription.text = [NSString stringWithFormat:@"Estimated output size: {%ld, %ld}", size, size];
+    _lbDescription.text = [NSString stringWithFormat:@"Estimated output: %0.2f Megapixels", 1.0f * size * size / 1024 / 1024];
+    
+    NSString *complexity;
+    float range = _sliderSampleSize.maximumValue - _sliderSampleSize.minimumValue;
+    if (_sliderSampleSize.value > _sliderSampleSize.minimumValue + range*0.67f){
+        complexity = @"Slow";
+    } else if (_sliderSampleSize.value < _sliderSampleSize.minimumValue + range*0.33f){
+        complexity = @"Fast";
+    } else {
+        complexity = @"Medium";
+    }
+    _lbProcessingTime.text = [NSString stringWithFormat:@"Estimated time: %@", complexity];
    
 }
 - (void)showAd{

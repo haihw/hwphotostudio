@@ -11,13 +11,15 @@
 @interface HWPhotoMosaicViewController : UIViewController
 @property (strong) UIImage *inputImage;
 @property (strong) NSMutableArray *metaPhotos;
-@property (strong, nonatomic) IBOutlet ASValueTrackingSlider *sliderSampleSize;
-@property (strong, nonatomic) IBOutlet ASValueTrackingSlider *sliderMosaicSize;
-@property (strong, nonatomic) IBOutlet UIButton *btnCompare;
-@property (strong, nonatomic) IBOutlet UIButton *btnProcess;
-@property (strong, nonatomic) IBOutlet UILabel *lbDescription;
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) IBOutlet UIView *imageContainerView;
+@property (weak, nonatomic) IBOutlet ASValueTrackingSlider *sliderSampleSize;
+@property (weak, nonatomic) IBOutlet ASValueTrackingSlider *sliderMosaicSize;
+@property (weak, nonatomic) IBOutlet UIButton *btnCompare;
+@property (weak, nonatomic) IBOutlet UIButton *btnProcess;
+@property (weak, nonatomic) IBOutlet UIButton *btnShare;
+@property (weak, nonatomic) IBOutlet UILabel *lbDescription;
+@property (weak, nonatomic) IBOutlet UILabel *lbProcessingTime;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *imageContainerView;
 - (IBAction)btnProcessTapped:(id)sender;
 - (IBAction)tapGestureHandle:(UITapGestureRecognizer *)sender;
 - (IBAction)sliderSampleSizeChange:(id)sender;
