@@ -13,9 +13,13 @@
 @property (strong) NSMutableArray *metaPhotos;
 @property (weak, nonatomic) IBOutlet ASValueTrackingSlider *sliderSampleSize;
 @property (weak, nonatomic) IBOutlet ASValueTrackingSlider *sliderMosaicSize;
+@property (weak, nonatomic) IBOutlet ASValueTrackingSlider *sliderOpacity;
+
+@property (weak, nonatomic) IBOutlet UIStackView *stackSettingView;
 @property (weak, nonatomic) IBOutlet UIButton *btnCompare;
 @property (weak, nonatomic) IBOutlet UIButton *btnProcess;
 @property (weak, nonatomic) IBOutlet UIButton *btnShare;
+@property (weak, nonatomic) IBOutlet UIButton *btnMoreSetting;
 @property (weak, nonatomic) IBOutlet UILabel *lbDescription;
 @property (weak, nonatomic) IBOutlet UILabel *lbProcessingTime;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -24,7 +28,9 @@
 - (IBAction)tapGestureHandle:(UITapGestureRecognizer *)sender;
 - (IBAction)sliderSampleSizeChange:(id)sender;
 - (IBAction)sliderMosaicSizeChange:(id)sender;
+- (IBAction)sliderMosaicOpacityChange:(id)sender;
 - (IBAction)btnShareTapped:(id)sender;
+- (IBAction)btnMoreSettingTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet GADBannerView *GAdBanner;
 
 @end

@@ -32,6 +32,7 @@
     formatter.roundingMode = NSNumberFormatterRoundDown;
     [_sliderMosaicSize setNumberFormatter:formatter];
     [_sliderSampleSize setNumberFormatter:formatter];
+    [_sliderOpacity setNumberFormatter:formatter];
     [self updateDescription];
     
     //AD
@@ -69,6 +70,7 @@
     _btnProcess.enabled = NO;
     NSInteger sampleSize = (NSInteger) _sliderSampleSize.value;
     NSInteger mosaicSize = (NSInteger) _sliderMosaicSize.value;
+    NSInteger opacity = (NSInteger) _sliderOpacity.value;
     NSDate *startTime = [NSDate date];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         // Do something...
@@ -78,7 +80,7 @@
                                  @"dy"    :[NSNumber numberWithInteger:mosaicSize],
                                  @"width" :[NSNumber numberWithInteger:sampleSize],
                                  @"height":[NSNumber numberWithInteger:sampleSize],
-                                 @"opacity":[NSNumber numberWithInteger:50]
+                                 @"opacity":[NSNumber numberWithInteger:opacity]
                                  };
         NSArray *copiedMetaPhotos = [self.metaPhotos mutableCopy];
         //shadow copy to prevent changing to original array
@@ -119,6 +121,18 @@
 }
 - (IBAction)sliderMosaicSizeChange:(id)sender {
     [self updateDescription];
+}
+- (IBAction)sliderMosaicOpacityChange:(id)sender{
+//    [self updateDescription];
+}
+
+- (IBAction)btnMoreSettingTapped:(id)sender {
+    NSArray *titles = @[@"More", @"Less"];
+    [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [self.btnMoreSetting setTitle:titles[self.stackSettingView.hidden]
+                             forState:UIControlStateNormal];
+        self.stackSettingView.hidden = !self.stackSettingView.hidden;
+    } completion:nil];
 }
 
 - (IBAction)btnShareTapped:(id)sender {
