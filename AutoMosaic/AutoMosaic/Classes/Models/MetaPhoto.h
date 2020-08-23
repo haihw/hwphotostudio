@@ -10,5 +10,12 @@
 
 @interface MetaPhoto : NSObject
 @property (strong) UIImage *photo;
+/**
+ Everage color of the meta photo
+ */
 @property (strong) UIColor *averageColor;
+/**
+ Count number of usage
+ */
+@property (assign) int usedCount;
 @end

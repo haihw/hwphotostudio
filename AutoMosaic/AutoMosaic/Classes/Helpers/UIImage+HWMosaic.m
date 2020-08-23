@@ -11,8 +11,12 @@
 #import "UIColor+Metrics.h"
 #import "UIColor+Distance.h"
 #import "UIImage+Resize.h"
+#define GLOBAL_MIN 100
+double globalMin; //to analyze which is best MIN to improve the performance search
 @implementation UIImage (HWMosaic)
-- (void)createMosaicWithMetaPhotos:(NSArray *)metaPhotos params:(NSDictionary *)params progress: (void(^)(float percentage, UIImage *mosaicImage)) block
+- (void)createMosaicWithMetaPhotos:(NSMutableArray *)metaPhotos
+                            params:(NSDictionary *)params
+                          progress: (void(^)(float percentage, UIImage *mosaicImage)) block
 {
 #if DEBUG
     NSDate *startTime = [NSDate date];
@@ -22,7 +26,7 @@
     float metaphotoHeight = anyMeta.photo.size.height;
     NSInteger sampleWidth = 320;
     NSInteger sampleHeight = 320;
-
+    float foregroundOpacity = 0.5f;
     NSString *metricsMethod = @"1";
     if (params)
     {
@@ -33,7 +37,12 @@
         sampleHeight = [[params objectForKey:@"height"] intValue];
 
         metricsMethod = [params objectForKey:@"metric"];
+        
+        if ([params objectForKey: @"opacity"] != nil){
+            foregroundOpacity = [[params objectForKey:@"opacity"] floatValue]/100;
+        }
     }
+    
     //resize image to sampled size
     UIImage *sampleImage = [self resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(sampleWidth, sampleHeight) interpolationQuality: kCGInterpolationHigh];
 
@@ -51,6 +60,7 @@
     
     [sampleImage drawInRect:CGRectMake(0, 0, finalSize.width, finalSize.height)];
     
+    //unused
     NSArray *palette = [metaPhotos valueForKey:@"averageColor"];
     
     //process
@@ -73,8 +83,15 @@
     
     // Now your rawData contains the image data in the RGBA8888 pixel format.
     NSUInteger totalPixel = width * height;
-    
-    NSUInteger interval = MAX(totalPixel / 1000, 10);
+    //To reduce duplicated photo, set maximum appearance number of each photo in the final photo.
+    int maxNumberOfUsage = (int)totalPixel/metaPhotos.count + 1;
+    //Reset usage count of metaphoto
+    for (MetaPhoto *metaPhoto in metaPhotos){
+        metaPhoto.usedCount = 0;
+    }
+//    int *flagCount = calloc(metaPhotos.count, sizeof(int));
+    globalMin = 888888888;
+    NSUInteger interval = MAX(totalPixel / 1000, 100);
     float red, green, blue;
     for (int i = 0 ; i < totalPixel ; i++)
     {
@@ -93,9 +110,11 @@
         //find the match meta photo with pointed color
         MetaPhoto *matched;
         if ([metricsMethod isEqualToString:@"1"]){
-            matched = [self matchedPhotoOfColor:pointColor from:metaPhotos];
-        } else if ([metricsMethod isEqualToString:@"2"])
-        {
+            matched = [self matchedPhotoOfColor:pointColor
+                                           from:metaPhotos
+                                   withMaxUsage:maxNumberOfUsage];
+            matched.usedCount ++;
+        } else if ([metricsMethod isEqualToString:@"2"]){
             UIColor *matchedColor = [pointColor closestColorInPalette:palette];
             NSInteger index = [palette indexOfObject:matchedColor];
             matched = metaPhotos[index];
@@ -103,10 +122,12 @@
         
         //draw matched photo at output context
         CGRect drawRect = CGRectMake(columnCoordinate * metaphotoWidth, rowCoordinate * metaphotoHeight, metaphotoWidth, metaphotoHeight);
-        [matched.photo drawInRect:drawRect blendMode:kCGBlendModeNormal alpha:0.8f];
+        [matched.photo drawInRect:drawRect
+                        blendMode:kCGBlendModeNormal
+                            alpha: foregroundOpacity];
 
     }
-    
+    NSLog(@"GLOBAL MIN: %f", globalMin);
     free(rawData);
     
     UIImage *combined = UIGraphicsGetImageFromCurrentImageContext();
@@ -116,18 +137,28 @@
     NSLog(@"Process Time: %f s", -[startTime timeIntervalSinceNow]);
 #endif
 }
-- (MetaPhoto *)matchedPhotoOfColor:(UIColor *)color from:(NSArray *)metaPhotoDB
+- (MetaPhoto *)matchedPhotoOfColor:(UIColor *)color
+                              from:(NSArray *)metaPhotoDB
+                      withMaxUsage:(int)maxUsage
 {
     MetaPhoto *nearestMetaPhoto;
     double min = 100000000;
     for (MetaPhoto *meta in metaPhotoDB)
     {
-        double distance = [color riemersmaDistanceTo:meta.averageColor];
-        if (distance < min)
-        {
-            min = distance;
-            nearestMetaPhoto = meta;
+        if (meta.usedCount <= maxUsage){
+            double distance = [color riemersmaDistanceTo:meta.averageColor];
+            if (distance < min)
+            {
+                min = distance;
+                nearestMetaPhoto = meta;
+            }
+            if (distance < GLOBAL_MIN){
+                break;
+            }
         }
+    }
+    if (min < globalMin){
+        globalMin = min; //for analytic
     }
     return nearestMetaPhoto;
 }

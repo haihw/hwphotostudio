@@ -62,7 +62,9 @@
 }
 - (void)viewDidAppear:(BOOL)animated
 {
+#ifndef DEBUG
     [gaBannerView loadRequest:[GADRequest request]];
+#endif
     [super viewDidAppear:animated];
 }
 - (void)didReceiveMemoryWarning {

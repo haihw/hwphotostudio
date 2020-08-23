@@ -78,8 +78,11 @@
                                  @"dy"    :[NSNumber numberWithInteger:mosaicSize],
                                  @"width" :[NSNumber numberWithInteger:sampleSize],
                                  @"height":[NSNumber numberWithInteger:sampleSize],
+                                 @"opacity":[NSNumber numberWithInteger:50]
                                  };
-        [self.inputImage createMosaicWithMetaPhotos: self.metaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
+        NSArray *copiedMetaPhotos = [self.metaPhotos mutableCopy];
+        //shadow copy to prevent changing to original array
+        [self.inputImage createMosaicWithMetaPhotos: copiedMetaPhotos params:params progress:^(float percentage, UIImage *mosaicImage) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (mosaicImage){
                     self.btnCompare.enabled = YES;
