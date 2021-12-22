@@ -79,7 +79,7 @@
                                               animated:YES
                                              withTitle:@"Scanning library..."];
     hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         self->libraryMetaPhotos = [NSMutableArray array];
         PHAssetCollection *collection;
         NSMutableArray *onePixels = [NSMutableArray new];

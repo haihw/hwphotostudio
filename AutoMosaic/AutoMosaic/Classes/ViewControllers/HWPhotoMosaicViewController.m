@@ -13,11 +13,11 @@
 #import "JTSImageViewController.h"
 #import "ASValueTrackingSlider.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
-@interface HWPhotoMosaicViewController () <ADBannerViewDelegate, ADInterstitialAdDelegate, GADInterstitialDelegate, GADBannerViewDelegate>
+@interface HWPhotoMosaicViewController () <GADBannerViewDelegate, GADInterstitialDelegate, GADInterstitialDelegate, GADBannerViewDelegate>
 {
     UIImage *outputImage;
     UIView *adContainerView;
-    ADInterstitialAd *adInterstitial;
+    GADInterstitial *adInterstitial;
     GADInterstitial *interstitial;
 }
 @end
@@ -33,14 +33,15 @@
     [_sliderMosaicSize setNumberFormatter:formatter];
     [_sliderSampleSize setNumberFormatter:formatter];
     [_sliderOpacity setNumberFormatter:formatter];
-    [self updateDescription];
-    
-    //AD
-    adInterstitial = [[ADInterstitialAd alloc] init];
-    adInterstitial.delegate = self;
     
     _GAdBanner.adUnitID = kGADBannerUnitID;
     _GAdBanner.rootViewController = self;
+    
+    self.sliderOpacity.value = 50;
+    self.sliderMosaicSize.value = 40;
+    self.sliderSampleSize.value = 200;
+    [self updateDescription];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,8 +50,8 @@
 }
 - (void)viewDidAppear:(BOOL)animated
 {
-    [_GAdBanner loadRequest:[GADRequest request]];
     [super viewDidAppear:animated];
+    [_GAdBanner loadRequest:[GADRequest request]];
 }
 /*
 #pragma mark - Navigation
@@ -72,7 +73,7 @@
     NSInteger mosaicSize = (NSInteger) _sliderMosaicSize.value;
     NSInteger opacity = (NSInteger) _sliderOpacity.value;
     NSDate *startTime = [NSDate date];
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         // Do something...
         NSDictionary *params = @{
                                  @"metric":@"1", //riemersmaDistanceTo
@@ -100,7 +101,7 @@
                     [HWProgressHUD hideHUDForView: self.imageContainerView animated:YES];
                 }
                 
-                hud.detailsLabel.text = [NSString stringWithFormat:@"Processing %0.1f%%", percentage*100];
+                hud.detailsLabel.text = [NSString stringWithFormat:@"%0.1f%%", percentage*100];
                 hud.progress = percentage;
             });
         }];
@@ -173,11 +174,6 @@
 - (void)showAd{
     if (interstitial.isReady) {
         [interstitial presentFromRootViewController:self];
-    } else if (adInterstitial.loaded)
-    {
-        adContainerView = [[UIView alloc] initWithFrame:self.view.bounds];
-        [self.view addSubview:adContainerView];
-        [adInterstitial presentInView: adContainerView];
     }
 }
 - (void)createAndLoadInterstitial {
@@ -211,24 +207,5 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"GAd failed: %@", error.localizedDescription);
     [_GAdBanner performSelector:@selector(loadRequest:) withObject:[GADRequest request] afterDelay:5];
 
-}
-#pragma mark - ad interstitialAd delegate
-- (void)interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error{
-    NSLog(@"Ad failed: %@", error.localizedDescription);
-    [self performSelector:@selector(showAd) withObject:nil afterDelay:5];
-}
-- (void)interstitialAdWillLoad:(ADInterstitialAd *)interstitialAd{
-    NSLog(@"Ad interstitial will load");
-}
-- (void)interstitialAdDidLoad:(ADInterstitialAd *)interstitialAd{
-    NSLog(@"Ad interstitial did load");
-}
-- (void)interstitialAdDidUnload:(ADInterstitialAd *)interstitialAd{
-    NSLog(@"Ad interstitial did unload");
-//    [self prepareForInterfaceBuilder];
-}
-- (void)interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd{
-    NSLog(@"Ad interstitial action did finish");
-    [adContainerView removeFromSuperview];
 }
 @end
