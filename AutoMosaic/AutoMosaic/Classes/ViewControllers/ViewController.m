@@ -36,37 +36,64 @@
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
     gaBannerView.adUnitID = kGADBannerUnitID;
     gaBannerView.rootViewController = self;
-    imageCollections = [HwPhotoHelper getAllPhotoAlbums];
-//    [self loadData];
     
 }
 - (void)loadData{
-    /*
-    [HWProgressHUD showHUDAddedTo:self.view
-                    dimBackground:YES
-                         animated:YES
-                        withTitle:@"Scanning library..."];
-    //       hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [HwPhotoHelper getAllPhotoAlbumsWithResponse:^(NSArray<ALAssetsGroup *> *albums) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                imageGroups = albums;
-                [albumPicker reloadAllComponents];
-                NSLog(@"Album count: %ld", (long)albums.count);
-                [HWProgressHUD hideHUDForView:self.view animated:YES];
-            });
-            
-        }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [HWProgressHUD showHUDAddedTo:self.view
+                        dimBackground:YES
+                             animated:YES
+                            withTitle:@"Scanning library..."];
     });
-*/
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        self->imageCollections = [HwPhotoHelper getAllPhotoAlbums];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self->albumPicker reloadAllComponents];
+            [HWProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+
 }
 - (void)viewDidAppear:(BOOL)animated
 {
 #ifndef DEBUG
     [gaBannerView loadRequest:[GADRequest request]];
 #endif
+
+    [self requestAuthorizationWithRedirectionToSettings];
     [super viewDidAppear:animated];
 }
+- (void)requestAuthorizationWithRedirectionToSettings {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+        if (status == PHAuthorizationStatusAuthorized) {
+            //We have permission. Do whatever is needed
+            [self loadData];
+        } else {
+            //No permission. Trying to normally request it
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                if (status == PHAuthorizationStatusAuthorized) {
+                    [self loadData];
+                } else {
+                    //User don't give us permission. Showing alert with redirection to settings
+                    //Getting description string from info.plist file
+                    NSString *accessDescription = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSPhotoLibraryUsageDescription"];
+                    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:accessDescription message:@"To give permissions tap on 'Change Settings' button" preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:@"Change Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                    }];
+                    [alertController addAction:settingsAction];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self presentViewController:alertController animated:YES completion:nil];
+                    });
+                }
+            }];
+        }
+    });
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

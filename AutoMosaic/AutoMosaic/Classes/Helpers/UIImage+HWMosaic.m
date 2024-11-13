@@ -93,18 +93,19 @@ double globalMin; //to analyze which is best MIN to improve the performance sear
     globalMin = 888888888;
     NSUInteger interval = MAX(totalPixel / 1000, 100);
     float red, green, blue;
-    for (int i = 0 ; i < totalPixel ; i++)
+    
+    for (int iteration = 0 ; iteration < totalPixel ; iteration++)
     {
-        if (i % interval == 0){
-            float percentage = 1.0f * i / totalPixel;
+        if (iteration % interval == 0){
+            float percentage = 1.0f * iteration / totalPixel;
             block (percentage, nil);
         }
         //get color of sample image
-        red = (rawData[i * bytesPerPixel]     * 1.0) / 255.0;
-        green = (rawData[i * bytesPerPixel + 1] * 1.0) / 255.0;
-        blue = (rawData[i * bytesPerPixel + 2] * 1.0) / 255.0;
-        int columnCoordinate = i % width;
-        int rowCoordinate = i / width;
+        red = (rawData[iteration * bytesPerPixel]     * 1.0) / 255.0;
+        green = (rawData[iteration * bytesPerPixel + 1] * 1.0) / 255.0;
+        blue = (rawData[iteration * bytesPerPixel + 2] * 1.0) / 255.0;
+        int columnCoordinate = iteration % width;
+        int rowCoordinate = iteration / width;
         UIColor *pointColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
         
         //find the match meta photo with pointed color

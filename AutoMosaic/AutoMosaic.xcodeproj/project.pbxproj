@@ -212,7 +212,6 @@
 				C55B66261A45F7C100585865 /* Models */,
 				C55B65F31A4570BD00585865 /* Others */,
 				C55B65F51A4570BD00585865 /* ViewControllers */,
-				C55B65F81A4570BD00585865 /* Views */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -276,13 +275,6 @@
 				C55B66311A46B9DB00585865 /* HWSettingViewController.m */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		C55B65F81A4570BD00585865 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		C55B65F91A4570BD00585865 /* Resources */ = {
@@ -410,7 +402,6 @@
 				TargetAttributes = {
 					C55B65C01A456FDC00585865 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 47NZJ66X5R;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -651,7 +642,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47NZJ66X5R;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -660,8 +652,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MARKETING_VERSION = 2.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.mosaicify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -676,7 +668,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47NZJ66X5R;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -685,8 +678,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MARKETING_VERSION = 2.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.mosaicify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3a3e76ab-4b49-4e0d-b1d2-3622b2f3818b";
