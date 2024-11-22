@@ -12,14 +12,15 @@
 #import "HWSettingViewController.h"
 #import "JTSImageViewController.h"
 #import "ASValueTrackingSlider.h"
-#import <GoogleMobileAds/GoogleMobileAds.h>
-@interface HWPhotoMosaicViewController () <GADBannerViewDelegate, GADInterstitialDelegate, GADInterstitialDelegate, GADBannerViewDelegate>
+@import GoogleMobileAds;
+@interface HWPhotoMosaicViewController () <GADBannerViewDelegate, GADFullScreenContentDelegate>
 {
     UIImage *outputImage;
     UIView *adContainerView;
-    GADInterstitial *adInterstitial;
-    GADInterstitial *interstitial;
+    
 }
+@property(nonatomic, strong) GADInterstitialAd *interstitial;
+
 @end
 
 @implementation HWPhotoMosaicViewController
@@ -172,40 +173,80 @@
    
 }
 - (void)showAd{
-    if (interstitial.isReady) {
-        [interstitial presentFromRootViewController:self];
+    if (self.interstitial) {
+      // The UIViewController parameter is nullable.
+      [self.interstitial presentFromRootViewController:nil];
+    } else {
+      NSLog(@"Ad wasn't ready");
     }
 }
 - (void)createAndLoadInterstitial {
-    interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGADInterstitialUnitID];
-    interstitial.delegate = self;
-    
+//    interstitial = [[GADInterstitial alloc] initWithAdUnitID:kGADInterstitialUnitID];
+//    interstitial.delegate = self;
+//    
+//    GADRequest *request = [GADRequest request];
+//    // Request test ads on devices you specify. Your test device ID is printed to the console when
+//    // an ad request is made. GADInterstitial automatically returns test ads when running on a
+//    // simulator.
+//    [interstitial loadRequest:request];
+//    
     GADRequest *request = [GADRequest request];
-    // Request test ads on devices you specify. Your test device ID is printed to the console when
-    // an ad request is made. GADInterstitial automatically returns test ads when running on a
-    // simulator.
-    [interstitial loadRequest:request];
+    [GADInterstitialAd loadWithAdUnitID:kGADInterstitialUnitID
+                                request:request
+                      completionHandler:^(GADInterstitialAd *ad, NSError *error) {
+        if (error) {
+            NSLog(@"Failed to load interstitial ad with error: %@", [error localizedDescription]);
+            return;
+        }
+        self.interstitial = ad;
+        self.interstitial.fullScreenContentDelegate = self;
+    }];
+
 }
 
 #pragma mark GADInterstitialDelegate implementation
-
-- (void)interstitial:(GADInterstitial *)interstitial
-didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"interstitialDidFailToReceiveAdWithError: %@", [error localizedDescription]);
+/// Tells the delegate that the ad failed to present full screen content.
+- (void)ad:(nonnull id<GADFullScreenPresentingAd>)ad
+didFailToPresentFullScreenContentWithError:(nonnull NSError *)error {
+    NSLog(@"Ad did fail to present full screen content.");
 }
 
-- (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {
-    NSLog(@"interstitialDidDismissScreen");
+/// Tells the delegate that the ad will present full screen content.
+- (void)adWillPresentFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
+    NSLog(@"Ad will present full screen content.");
+}
+
+/// Tells the delegate that the ad dismissed full screen content.
+- (void)adDidDismissFullScreenContent:(nonnull id<GADFullScreenPresentingAd>)ad {
+  NSLog(@"Ad did dismiss full screen content.");
 }
 
 #pragma mark GADBannerViewDelegate implementation
+- (void)bannerViewDidReceiveAd:(GADBannerView *)bannerView {
+    NSLog(@"bannerViewDidReceiveAd");
+}
+
+- (void)bannerView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(NSError *)error {
+    NSLog(@"bannerView:didFailToReceiveAdWithError: %@", [error localizedDescription]);
+    [_GAdBanner performSelector:@selector(loadRequest:) withObject:[GADRequest request] afterDelay:5];
+}
+
+- (void)bannerViewDidRecordImpression:(GADBannerView *)bannerView {
+    NSLog(@"bannerViewDidRecordImpression");
+}
+
+- (void)bannerViewWillPresentScreen:(GADBannerView *)bannerView {
+    NSLog(@"bannerViewWillPresentScreen");
+}
+
+- (void)bannerViewWillDismissScreen:(GADBannerView *)bannerView {
+    NSLog(@"bannerViewWillDismissScreen");
+}
+
+- (void)bannerViewDidDismissScreen:(GADBannerView *)bannerView {
+    NSLog(@"bannerViewDidDismissScreen");
+}
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
     NSLog(@"GAd banner did receive ad");
-}
-- (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
-{
-    NSLog(@"GAd failed: %@", error.localizedDescription);
-    [_GAdBanner performSelector:@selector(loadRequest:) withObject:[GADRequest request] afterDelay:5];
-
 }
 @end

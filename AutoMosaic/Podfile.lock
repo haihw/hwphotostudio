@@ -1,24 +1,32 @@
 PODS:
   - ASValueTrackingSlider (0.12.1)
+  - Google-Mobile-Ads-SDK (11.11.0):
+    - GoogleUserMessagingPlatform (>= 1.1)
+  - GoogleUserMessagingPlatform (2.7.0)
   - iRate (1.12.2)
   - MBProgressHUD (1.2.0)
 
 DEPENDENCIES:
   - ASValueTrackingSlider
+  - Google-Mobile-Ads-SDK
   - iRate
   - MBProgressHUD
 
 SPEC REPOS:
   trunk:
     - ASValueTrackingSlider
+    - Google-Mobile-Ads-SDK
+    - GoogleUserMessagingPlatform
     - iRate
     - MBProgressHUD
 
 SPEC CHECKSUMS:
   ASValueTrackingSlider: 5261de3fcf00adb339efc93885e8f0bc99e703cd
+  Google-Mobile-Ads-SDK: 6d2fc31d83b7b13a7dee3d622f1538fa3324958a
+  GoogleUserMessagingPlatform: a8b56893477f67212fbc8411c139e61d463349f5
   iRate: 4fc69958788624545e5d050c8ffd20884013c3f1
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
 
-PODFILE CHECKSUM: aa01fce0942c117232426a81284ec6edff98a826
+PODFILE CHECKSUM: e6dcd8b1968d29c0be9b19c6878947b13df6ea08
 
 COCOAPODS: 1.15.2

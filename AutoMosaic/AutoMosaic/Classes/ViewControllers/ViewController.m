@@ -33,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self.navigationController setNavigationBarHidden:YES];
-    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    NSLog(@"Google Mobile Ads SDK version: %ld", (long)[GADRequest version]);
     gaBannerView.adUnitID = kGADBannerUnitID;
     gaBannerView.rootViewController = self;
     
@@ -205,7 +205,7 @@
 }
 - (BOOL) isReadyToMosaicify{
     if (libraryMetaPhotos.count == 0){
-        _lbPhotoNumber.text = @"0 photo loaded. Please select album and start scan library";
+        _lbPhotoNumber.text = @"0 photo loaded. Please select album and start scan library first";
     }
     
 
@@ -238,14 +238,14 @@
 {
 }
 #pragma mark addelegate
--(void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
-{
-    NSLog(@"%@", error.localizedDescription);
-    [gaBannerView performSelector:@selector(loadRequest:) withObject:[GADRequest request] afterDelay:5];
-}
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
-    NSLog(@"Ad received");
-}
+//-(void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error
+//{
+//    NSLog(@"%@", error.localizedDescription);
+//    [gaBannerView performSelector:@selector(loadRequest:) withObject:[GADRequest request] afterDelay:5];
+//}
+//- (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
+//    NSLog(@"Ad received");
+//}
 
 #pragma mark picker view
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{

@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC557A15251B2F630819DF18 /* libPods-Mosaicify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE23114F93C83FDA272EE58 /* libPods-Mosaicify.a */; };
+		37DC3089A84832CDB6996B45 /* Pods_Mosaicify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9664E3ABAF08CA73003B526 /* Pods_Mosaicify.framework */; };
 		C52D62022473BD32002C157B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52D62012473BD32002C157B /* Photos.framework */; };
 		C52D62042473BD3C002C157B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52D62032473BD3C002C157B /* PhotosUI.framework */; };
 		C52D62122473E17A002C157B /* JTSImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C52D62062473E17A002C157B /* JTSImageInfo.m */; };
@@ -31,11 +31,6 @@
 		C55B66321A46B9DB00585865 /* HWSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55B66311A46B9DB00585865 /* HWSettingViewController.m */; };
 		C5A0D520247416E8002AB3B2 /* HWSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A0D51F247416E8002AB3B2 /* HWSetting.m */; };
 		C5A0D5252474FF10002AB3B2 /* UIColor+Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A0D5232474FF10002AB3B2 /* UIColor+Distance.m */; };
-		C5A0D52A2475003D002AB3B2 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A0D52624750038002AB3B2 /* nanopb.xcframework */; };
-		C5A0D52B2475003D002AB3B2 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A0D52724750038002AB3B2 /* GoogleUtilities.xcframework */; };
-		C5A0D52C2475003D002AB3B2 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A0D5282475003A002AB3B2 /* GoogleAppMeasurement.framework */; };
-		C5A0D52D2475003D002AB3B2 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A0D5292475003D002AB3B2 /* GoogleMobileAds.framework */; };
-		C5A0D52F24750096002AB3B2 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A0D52E24750096002AB3B2 /* PromisesObjC.xcframework */; };
 		C5E160571C4175D500CAA19E /* mosaic_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E160561C4175D500CAA19E /* mosaic_sample.png */; };
 		C5F5F47A1A4FA72300DFC256 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4751A4FA72300DFC256 /* UIImage+Alpha.m */; };
 		C5F5F47B1A4FA72300DFC256 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F5F4771A4FA72300DFC256 /* UIImage+Resize.m */; };
@@ -92,11 +87,6 @@
 		C5A0D5222474FF10002AB3B2 /* MTColorDistance-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTColorDistance-Prefix.pch"; sourceTree = "<group>"; };
 		C5A0D5232474FF10002AB3B2 /* UIColor+Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Distance.m"; sourceTree = "<group>"; };
 		C5A0D5242474FF10002AB3B2 /* UIColor+Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Distance.h"; sourceTree = "<group>"; };
-		C5A0D52624750038002AB3B2 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
-		C5A0D52724750038002AB3B2 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
-		C5A0D5282475003A002AB3B2 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
-		C5A0D5292475003D002AB3B2 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		C5A0D52E24750096002AB3B2 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PromisesObjC.xcframework; sourceTree = "<group>"; };
 		C5A0D5302475038C002AB3B2 /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
 		C5E160561C4175D500CAA19E /* mosaic_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mosaic_sample.png; sourceTree = "<group>"; };
 		C5E160581C417B0A00CAA19E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
@@ -106,7 +96,7 @@
 		C5F5F4771A4FA72300DFC256 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		C5F5F4781A4FA72300DFC256 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
 		C5F5F4791A4FA72300DFC256 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
-		FBE23114F93C83FDA272EE58 /* libPods-Mosaicify.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Mosaicify.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9664E3ABAF08CA73003B526 /* Pods_Mosaicify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mosaicify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDADE489F5BCDBCE69F05F04 /* Pods-Mosaicify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mosaicify.release.xcconfig"; path = "Target Support Files/Pods-Mosaicify/Pods-Mosaicify.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,14 +105,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5A0D52B2475003D002AB3B2 /* GoogleUtilities.xcframework in Frameworks */,
 				C52D62042473BD3C002C157B /* PhotosUI.framework in Frameworks */,
-				C5A0D52C2475003D002AB3B2 /* GoogleAppMeasurement.framework in Frameworks */,
 				C52D62022473BD32002C157B /* Photos.framework in Frameworks */,
-				AC557A15251B2F630819DF18 /* libPods-Mosaicify.a in Frameworks */,
-				C5A0D52D2475003D002AB3B2 /* GoogleMobileAds.framework in Frameworks */,
-				C5A0D52A2475003D002AB3B2 /* nanopb.xcframework in Frameworks */,
-				C5A0D52F24750096002AB3B2 /* PromisesObjC.xcframework in Frameworks */,
+				37DC3089A84832CDB6996B45 /* Pods_Mosaicify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,11 +213,6 @@
 		C55B65F11A4570BD00585865 /* GlobalLibs */ = {
 			isa = PBXGroup;
 			children = (
-				C5A0D52E24750096002AB3B2 /* PromisesObjC.xcframework */,
-				C5A0D5282475003A002AB3B2 /* GoogleAppMeasurement.framework */,
-				C5A0D5292475003D002AB3B2 /* GoogleMobileAds.framework */,
-				C5A0D52724750038002AB3B2 /* GoogleUtilities.xcframework */,
-				C5A0D52624750038002AB3B2 /* nanopb.xcframework */,
 				C5A0D5212474FF10002AB3B2 /* MTColorDistance */,
 				C52D62052473E17A002C157B /* JTSImageViewController */,
 			);
@@ -329,7 +309,7 @@
 				C52D62012473BD32002C157B /* Photos.framework */,
 				C5E160581C417B0A00CAA19E /* iAd.framework */,
 				C55B66131A45C4DF00585865 /* AssetsLibrary.framework */,
-				FBE23114F93C83FDA272EE58 /* libPods-Mosaicify.a */,
+				E9664E3ABAF08CA73003B526 /* Pods_Mosaicify.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -380,6 +360,7 @@
 				C55B65BE1A456FDC00585865 /* Frameworks */,
 				C55B65BF1A456FDC00585865 /* Resources */,
 				9B2B2AB5A5D88C8767FC4D2C /* [CP] Copy Pods Resources */,
+				B6729964B4F6883A857086A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -402,6 +383,7 @@
 				TargetAttributes = {
 					C55B65C01A456FDC00585865 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 47NZJ66X5R;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -469,15 +451,39 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Mosaicify/Pods-Mosaicify-resources.sh",
-				"${PODS_ROOT}/iRate/iRate/iRate.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUserMessagingPlatform/UserMessagingPlatformResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/iRate.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMobileAdsResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserMessagingPlatformResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mosaicify/Pods-Mosaicify-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6729964B4F6883A857086A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mosaicify/Pods-Mosaicify-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ASValueTrackingSlider/ASValueTrackingSlider.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/iRate/iRate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASValueTrackingSlider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iRate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mosaicify/Pods-Mosaicify-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -641,7 +647,6 @@
 			baseConfigurationReference = AAFC7BFF52239242D6B1F39B /* Pods-Mosaicify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 47NZJ66X5R;
 				ENABLE_BITCODE = NO;
@@ -653,11 +658,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.mosaicify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -667,7 +671,6 @@
 			baseConfigurationReference = FDADE489F5BCDBCE69F05F04 /* Pods-Mosaicify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 47NZJ66X5R;
 				ENABLE_BITCODE = NO;
@@ -679,11 +682,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/AutoMosaic/Classes/Others/PrefixHeader.pch";
 				INFOPLIST_FILE = AutoMosaic/Resources/Data/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.mosaicify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3a3e76ab-4b49-4e0d-b1d2-3622b2f3818b";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
